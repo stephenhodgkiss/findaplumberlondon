@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://findaplumberlondon.com
+
+# Sitemaps
+Sitemap: https://findaplumberlondon.com/sitemap.xml

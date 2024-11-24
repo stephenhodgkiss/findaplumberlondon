@@ -1,0 +1,2094 @@
+
+Foursquare Places API v3 - Pu...
+Places API Documentation
+Version
+CURRENT
+Language
+Places API Documentation
+Foursquare Places APIs
+
+Our Places API Postman collection allows developers to test our Places endpoints with different inputs to review how the API will respond.
+Usage
+
+All API call to Foursquare's endpoints require an API Key. If you dont have an API key already generate one in out Developer Console.
+
+Set your API key as the value for a global variable named 'fsq_apiKey'. All request will read that global var to execute.
+
+Autocomplete sessions can use a session token to reduce cost between calls (usually every keystroke). Create 2 global variables named 'session_token' and 'expire_session' to allow the pre-request script to manage this for you.
+
+Most endpoints come with pre-filled data that will return a reponse. Play around with inputs to get an understanding for how the API will respond. Our responses are typically very concise and infrom the user of what issue occurred.
+
+Use our Developer Docs for more in depth API documentation.
+
+Join our Discord Developer Comminity for help from other engineers or to provide feedback on API usage.
+
+*Note: Successful response schemas include all possible fields but may not be typical of a standard response for that endpoint.
+Authorization API Key
+Key
+Authorization
+Value
+{{fsq_apiKey}}
+GETPlace Search
+https://api.foursquare.com/v3/places/search?query=Burgers&ll=41.8781,-87.6298&radius=36105&categories=13000&exclude_all_chains=true&fields=fsq_id,name,location&min_price=3&max_price=3&open_at=&open_now=true&near=&sort=DISTANCE&limit=20&session_token={{session_token}}
+
+Search for places in the FSQ Places database using a location and querying by name, category name, telephone number, taste label, or chain name. For example, search for "coffee" to get back a list of recommended coffee shops. 
+
+You may pass a location with your request by using one of the following options. If none of the following options are passed, Place Search defaults to geolocation using ip biasing with the optional radius parameter.
+
+    ll & radius (circular boundary)
+    near (geocodable locality)
+    ne & sw (rectangular boundary)
+
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+query
+Burgers
+
+A string to be matched against all content for this place, including but not limited to venue name, category, telephone number, taste, and tips.
+ll
+41.8781,-87.6298
+
+The latitude/longitude around which to retrieve place information. This must be specified as latitude,longitude (e.g., ll=41.8781,-87.6298).
+radius
+36105
+
+Sets a radius distance (in meters) used to define an area to bias search results. The maximum allowed radius is 100,000 meters. Radius can be used in combination with ll or ip biased geolocation only. By using radius, global search results will be omitted.
+categories
+13000
+
+Filters the response and returns FSQ Places matching the specified categories. Supports multiple Category IDs, separated by commas.
+
+For a complete list of Foursquare Category IDs, refer to the Category Taxonomy page.
+chains
+
+Filters the response and returns FSQ Places matching the specified chains. Supports multiple chain IDs, separated by commas.
+
+For more information on Foursquare Chain IDs, refer to the Chains page.
+exclude_chains
+
+Filters the response and returns FSQ Places not matching any of the specified chains. Supports multiple chain IDs, separated by commas.
+
+For more information on Foursquare Chain IDs, refer to the Chains page.
+exclude_all_chains
+true
+
+Filters the response by only returning FSQ Places that are not known to be part of any chain.
+fields
+fsq_id,name,location
+
+Indicate which fields to return in the response, separated by commas. If no fields are specified, all Core Fields are returned by default.
+
+For a complete list of returnable fields, refer to the Response Fields page.
+min_price
+3
+
+Restricts results to only those places within the specified price range. Valid values range between 1 (most affordable) to 4 (most expensive), inclusive.
+max_price
+3
+
+Restricts results to only those places within the specified price range. Valid values range between 1 (most affordable) to 4 (most expensive), inclusive.
+open_at
+
+Support local day and local time requests through this parameter. To be specified as DOWTHHMM (e.g., 1T2130), where DOW is the day number 1-7 (Monday = 1, Sunday = 7) and time is in 24 hour format.
+
+Places that do not have opening hours will not be returned if this parameter is specified.
+open_now
+true
+
+Restricts results to only those places that are open now.
+
+Places that do not have opening hours will not be returned if this parameter is specified.
+ne
+
+The latitude/longitude representing the north/east points of a rectangle. Must be used with sw parameter to specify a rectangular search box. Global search results will be omitted.
+sw
+
+The latitude/longitude representing the south/west points of a rectangle. Must be used with ne parameter to specify a rectangular search box. Global search results will be omitted.
+near
+
+A string naming a locality in the world (e.g., "Chicago, IL"). If the value is not geocodable, returns an error.
+sort
+DISTANCE
+
+Specifies the order in which results are listed. Possible values are:
+
+    relevance (default)
+    rating
+    distance
+
+limit
+20
+
+The number of results to return, up to 50. Defaults to 10.
+session_token
+{{session_token}}
+
+A user-generated token to identify a session for billing purposes. Learn more about session tokens.
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/places/search?query=Burgers&ll=41.8781%2C-87.6298&radius=36105&categories=13000&chains=ab4a3530-d68a-012e-5619-003048cad9da&exclude_chains=&fields=fsq_id%2Cname%2Clocation&min_price=3&max_price=3&open_at=&open_now=true&ne=&sw=&near=&sort=DISTANCE&limit=14&session_token=eu%20do%20voluptate%20enim'
+
+200 OK
+Response
+
+json
+
+{
+    "results": [
+        {
+            "fsq_id": "12340b116d390f4708ed099a",
+            "categories": [
+                {
+                    "id": 13065,
+                    "name": "Restaurant",
+                    "icon": {
+                            "id": "1234",
+                            "created_at": "2022-04-23T18:25:43.511Z",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotdog_",
+                            "suffix": ".png",
+                            "width": 1500,
+                            "height": 1500,
+                            "classifications":["food"],
+                            "tip": {
+                                "id": "123ABC",
+                                "created_at": "2022-04-23T18:25:43.511Z",
+                                "text": "A POI tip",
+                                "url": "somelink.com",
+                                "photo": "photolink.com",
+                                "lang": "EN",
+                                "agree_count": 1000,
+                                "disagree_count": 1000
+                            }
+                        }
+                }
+            ],
+            "chains": [
+                {
+                    "id": "12345",
+                    "name": "Chain Name"
+                }
+            ],
+            "date_closed": "2023-01-15",
+            "description": "description of poi",
+            "distance": 292,
+            "email": "poi@site.com",
+            "fax": "123-456-7890",
+            "features":{
+                "payment": {
+                "credit_cards": {
+                "accepts_credit_cards": {},
+                "discover": {},
+                "visa": {},
+                "diners_club": {},
+                "master_card": {}
+            },
+            "digital_wallet": {
+                "accepts_nfc": {}
+            }
+            },
+            "food_and_drink": {
+            "alcohol": {
+                "beer": {},
+                "byo": {},
+                "cocktails": {},
+                "full_bar": {},
+                "wine": {}
+            },
+            "meals": {
+                "breakfast": {},
+                "brunch": {},
+                "lunch": {},
+                "happy_hour": {},
+                "dessert": {},
+                "dinner": {}
+            }
+            },
+            "services": {
+            "delivery": {},
+            "takeout": {},
+            "drive_through": {},
+            "dine_in": {
+                "reservations": {},
+                "online_reservations": {},
+                "groups_only_reservations": {}
+            }
+            },
+            "amenities": {
+                "restroom": {},
+                "smoking": {},
+                "jukebox": {},
+                "music": {},
+                "live_music": {},
+                "private_room": {},
+                "outdoor_seating": {},
+                "tvs": {},
+                "atm": {},
+                "coat_check": {},
+                "wheelchair_accessible": {},
+                "parking": {
+                    "parking": {},
+                    "street_parking": {},
+                    "valet_parking": {},
+                    "public_lot": {},
+                    "private_lot": {}
+                }
+            }
+        },
+            "geocodes": {
+                "drop_off": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "front_door": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "main": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "road": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "roof": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                }
+            },
+            "hours": {
+                "display": "lorem",
+                "is_local_holiday": false,
+                "open_now": true,
+                "regular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am"
+                    }
+                ],
+                "seasonal":[
+                    {
+                        "closed": "true",
+                        "end_date": "2023-01-15",
+                        "hours": [
+                            {
+                                "close": "10:00pm",
+                                "day": "1",
+                                "open": "6:00am" 
+                            }
+                        ],
+                    "start_date": "2023-01-14"
+                    }
+                ]
+            },
+            "hours_popular": [
+                {
+                    "close": "10:00pm",
+                    "day": "1",
+                    "open": "6:00am"
+                }
+            ],
+            "link": "/v3/places/4c6b0b116d390f4708ed099a",
+            "location": {
+                "address": "Ut magna ut",
+                "address_extended": "exercitation cupidatat lab",
+                "admin_region": "ad id nostrud exercitation commodo",
+                "census_block": "culpa id est deserunt",
+                "country": "sed exercitation ipsum",
+                "cross_street": "labore est dolore tempor eiusm",
+                "dma": "cillum cupidatat deserunt officia",
+                "formatted_address": "quis anim voluptate labore tempor",
+                "locality": "amet deserunt sunt eiusmod",
+                "neighborhood": ["quis anim"],
+                "po_box": "culpa incididunt amet in",
+                "post_town": "in",
+                "postcode": "sed ",
+                "region": "amet reprehenderit eu Lorem"
+            },
+            "menu": "lorem ipsum",
+            "name": "The Florentine",
+            "photos": [
+                {
+                "id": "123455f5b863c0008b1edca",
+                "created_at": "2020-01-14T02:50:07.000Z",
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/12345438_8tJRLpG3PbPVN-Ekde66x8XN7IVVYP__YaS1KmLfntc.png",
+                "width": 2000,
+                "height": 1500,
+                "classifications": [
+                    "food"
+                    ],
+                "tip": {
+                    "id": "123ABC",
+                    "created_at": "2022-04-23T18:25:43.511Z",
+                    "text": "A POI tip",
+                    "url": "somelink.com",
+                    "photo": "photolink.com",
+                    "lang": "EN",
+                    "agree_count": 1000,
+                    "disagree_count": 1000
+                    }
+                }     
+            ],
+            "popularity": "1.75",
+            "price": 2,
+            "rating": "75.52",
+            "related_places": {
+                "parent": "lorem ipsom"
+            },
+            "social_media": {
+                "facebook_id": "lorem",
+                "instagram": "ipsom",
+                "twitter": "plurubus"
+            },
+            "stats": {
+                "total_photos": 20,
+                "total_ratings": 50,
+                "total_tips": 25
+            },
+            "store_id" : "plurubus",
+            "tastes": ["lorem"],
+            "tel": "123-456-7890",
+            "timezone": "America/Chicago",
+            "tips": [
+                        {
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": -65410876
+                    }
+            ],
+            "verified": true,
+            "website": "www.thesite.com"
+
+        }
+    ],
+    "context": {
+        "geo_bounds": {
+            "circle": {
+                "center": {
+                    "latitude": 41.8781,
+                    "longitude": -87.6298
+                },
+                "radius": 36105
+            }
+        }
+    }
+}
+
+GETGet Autocomplete Results
+https://api.foursquare.com/v3/autocomplete?ll=41.8861786,-87.6332421&limit=14&types=place&session_token={{session_token}}&query=Als&radius=3000
+
+Returns a list of top addresses, places, geos, and/or searches partially matching the provided keyword and location inputs.
+
+An Autocomplete session begins when the user starts typing a query, and concludes when they select a result and a call is made to Place Search, Place Details, or Address Details.
+
+IMPORTANT: Autocomplete uses session tokens to group the user's query and the user's selected result into a discrete session for billing purposes. Learn more about session tokens.
+
+If the session_token parameter is omitted, the session is charged per keystroke/request.
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+ll
+41.8861786,-87.6332421
+limit
+14
+types
+place
+
+The types of results to return; either an address, geo, place, and/or search. If no type is specified, all types will be returned.
+session_token
+{{session_token}}
+query
+Als
+radius
+3000
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/autocomplete?query=eu%20do%20voluptate%20enim&ll=eu%20do%20voluptate%20enim&radius=-7386737&types=eu%20do%20voluptate%20enim&session_token=eu%20do%20voluptate%20enim&limit=14'
+
+200 OK
+Response
+
+json
+
+{
+    "results": [
+        {
+            "type": "address",
+            "text": {
+                "primary": "1234 N Address",
+                "secondary": "City IL 12345",
+                "highlight": [
+                    {
+                        "start": 0,
+                        "length": 4
+                    }
+                ]
+            },
+            "icon": {
+                            "id": "1234",
+                            "created_at": "2022-04-23T18:25:43.511Z",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotdog_",
+                            "suffix": ".png",
+                            "width": 1500,
+                            "height": 1500,
+                            "classifications":["food"],
+                            "tip": {
+                                "id": "123ABC",
+                                "created_at": "2022-04-23T18:25:43.511Z",
+                                "text": "A POI tip",
+                                "url": "somelink.com",
+                                "photo": "photolink.com",
+                                "lang": "EN",
+                                "agree_count": 1000,
+                                "disagree_count": 1000
+                            }
+                     },
+            "link": "/v3/address/US-5553415700000730c86d-1564?session_token=zYarUbhjR87d033M9yWNoMHq77ZPANmg",
+            "place": {
+                "fsq_id": "12340b116d390f4708ed099a",
+                "categories": [
+                    {
+                    "id": 13065,
+                    "name": "Restaurant",
+                    "icon": {
+                            "id": "1234",
+                            "created_at": "2022-04-23T18:25:43.511Z",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotdog_",
+                            "suffix": ".png",
+                            "width": 1500,
+                            "height": 1500,
+                            "classifications":["food"],
+                            "tip": {
+                                "id": "123ABC",
+                                "created_at": "2022-04-23T18:25:43.511Z",
+                                "text": "A POI tip",
+                                "url": "somelink.com",
+                                "photo": "photolink.com",
+                                "lang": "EN",
+                                "agree_count": 1000,
+                                "disagree_count": 1000
+                            }
+                        }
+                }
+            ],
+            "chains": [
+                {
+                    "id": "12345",
+                    "name": "Chain Name"
+                }
+            ],
+            "date_closed": "2023-01-15",
+            "description": "description of poi",
+            "distance": 292,
+            "email": "poi@site.com",
+            "fax": "123-456-7890",
+            "features":{
+                "payment": {
+                "credit_cards": {
+                "accepts_credit_cards": {},
+                "discover": {},
+                "visa": {},
+                "diners_club": {},
+                "master_card": {}
+            },
+            "digital_wallet": {
+                "accepts_nfc": {}
+            }
+            },
+            "food_and_drink": {
+            "alcohol": {
+                "beer": {},
+                "byo": {},
+                "cocktails": {},
+                "full_bar": {},
+                "wine": {}
+            },
+            "meals": {
+                "breakfast": {},
+                "brunch": {},
+                "lunch": {},
+                "happy_hour": {},
+                "dessert": {},
+                "dinner": {}
+            }
+            },
+            "services": {
+            "delivery": {},
+            "takeout": {},
+            "drive_through": {},
+            "dine_in": {
+                "reservations": {},
+                "online_reservations": {},
+                "groups_only_reservations": {}
+            }
+            },
+            "amenities": {
+                "restroom": {},
+                "smoking": {},
+                "jukebox": {},
+                "music": {},
+                "live_music": {},
+                "private_room": {},
+                "outdoor_seating": {},
+                "tvs": {},
+                "atm": {},
+                "coat_check": {},
+                "wheelchair_accessible": {},
+                "parking": {
+                    "parking": {},
+                    "street_parking": {},
+                    "valet_parking": {},
+                    "public_lot": {},
+                    "private_lot": {}
+                }
+            }
+        },
+             "geocodes": {
+                "drop_off": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "front_door": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "main": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "road": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                },
+                "roof": {
+                    "latitude": 41.879136,
+                    "longitude": -87.632628
+                }
+            },
+            "hours": {
+                "display": "lorem",
+                "is_local_holiday": false,
+                "open_now": true,
+                "regular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am"
+                    }
+                ],
+                "seasonal":[
+                    {
+                        "closed": "true",
+                        "end_date": "2023-01-15",
+                        "hours": [
+                            {
+                                "close": "10:00pm",
+                                "day": "1",
+                                "open": "6:00am" 
+                            }
+                        ],
+                    "start_date": "2023-01-14"
+                    }
+                ]
+            },
+            "hours_popular": [
+                {
+                    "close": "10:00pm",
+                    "day": "1",
+                    "open": "6:00am"
+                }
+            ],
+            "link": "/v3/places/4c6b0b116d390f4708ed099a",
+            "location": {
+                "address": "Ut magna ut",
+                "address_extended": "exercitation cupidatat lab",
+                "admin_region": "ad id nostrud exercitation commodo",
+                "census_block": "culpa id est deserunt",
+                "country": "sed exercitation ipsum",
+                "cross_street": "labore est dolore tempor eiusm",
+                "dma": "cillum cupidatat deserunt officia",
+                "formatted_address": "quis anim voluptate labore tempor",
+                "locality": "amet deserunt sunt eiusmod",
+                "neighborhood": ["quis anim"],
+                "po_box": "culpa incididunt amet in",
+                "post_town": "in",
+                "postcode": "sed ",
+                "region": "amet reprehenderit eu Lorem"
+            },
+            "menu": "lorem ipsum",
+            "name": "The Florentine",
+            "photos": [
+                {
+                "id": "123455f5b863c0008b1edca",
+                "created_at": "2020-01-14T02:50:07.000Z",
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/12345438_8tJRLpG3PbPVN-Ekde66x8XN7IVVYP__YaS1KmLfntc.png",
+                "width": 2000,
+                "height": 1500,
+                "classifications": [
+                    "food"
+                    ],
+                "tip":{
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": -65410876
+                    }
+                }
+            ],
+            "popularity": "1.75",
+            "price": 2,
+            "rating": "75.52",
+            "related_places": {
+                "parent": "lorem ipsom"
+            },
+            "social_media": {
+                "facebook_id": "lorem",
+                "instagram": "ipsom",
+                "twitter": "plurubus"
+            },
+            "stats": {
+                "total_photos": 20,
+                "total_ratings": 50,
+                "total_tips": 25
+            },
+            "store_id" : "plurubus",
+            "tastes": ["lorem"],
+            "tel": "123-456-7890",
+            "timezone": "America/Chicago",
+            "tips": [
+                        {
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": -65410876
+                    }
+            ],
+            "verified": true,
+            "website": "www.thesite.com"
+        },
+            "address": {
+                "address_id": "US-1234415700000730c86d-1564"
+            },
+            "search": {
+                "query": "Some query",
+                "category": {
+                    "id": "12345",
+                    "name": "Category Name",
+                    "icon": {
+                        "id": "12345",
+                        "created_at": "2022-04-23T18:25:43.511Z",
+                        "prefix": "www.linktoimagedomain",
+                        "suffix": ".png",
+                        "width": 1500,
+                        "height": 1500,
+                        "classifications": ["food"],
+                        "tip": {
+                            "id": "123ABC",
+                            "created_at": "2022-04-23T18:25:43.511Z",
+                            "text": "A POI tip",
+                            "url": "somelink.com",
+                            "photo": "photolink.com",
+                            "lang": "EN",
+                            "agree_count": 1000,
+                            "disagree_count": 1000
+                        }
+                    }
+                },
+                       "chain": {
+                           "id": "123ABC",
+                           "name":"Category Name"
+                       },
+                       "geo":{
+                           "name": "ipsom",
+                           "center": {
+                               "latitude": 12.1234,
+                               "longitude": -23.123
+                           },
+                           "bounds": {
+                               "ne": {
+                                    "latitude": 12.1234,
+                                    "longitude": -23.123
+                               },
+                               "sw": {
+                                    "latitude": 12.1234,
+                                    "longitude": -23.123
+                               }
+                           },
+                           "cc": "lorem ipsum",
+                           "type": "place"
+                       },
+                       "debug": {
+                           "score": 123
+                       }
+                    }
+                }
+        
+    ]
+}
+
+GETGet Place Details
+https://api.foursquare.com/v3/places/:fsq_id?fields=&session_token={{session_token}}
+
+Retrieve comprehensive information and metadata for a FSQ Place using the fsq_id.
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+fields
+
+Indicate which fields to return in the response, separated by commas. If no fields are specified, all Core Fields are returned by default.
+
+For a complete list of returnable fields, refer to the Response Fields page.
+session_token
+{{session_token}}
+
+A user-generated token to identify a session for billing purposes. Learn more about session tokens.
+Path Variables
+fsq_id
+4c6b0b116d390f4708e
+
+(Required) A unique string identifier for a FSQ Place (formerly known as Venue ID). E.g., Foursquare HQ's fsq_id = 5a187743ccad6b307315e6fe
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/places/eu do voluptate enim?fields=eu%20do%20voluptate%20enim&session_token=eu%20do%20voluptate%20enim'
+
+200 OK
+Response
+
+json
+
+{
+  "fsq_id": "non aliqua",
+  "categories":[
+                    {
+                        "id": 13058,
+                        "name": "Hot Dog Joint",
+                        "icon": {
+                            "id": "1234",
+                            "created_at": "2022-04-23T18:25:43.511Z",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotdog_",
+                            "suffix": ".png",
+                            "width": 1500,
+                            "height": 1500,
+                            "classifications":["food"],
+                            "tip": {
+                                "id": "123ABC",
+                                "created_at": "2022-04-23T18:25:43.511Z",
+                                "text": "A POI tip",
+                                "url": "somelink.com",
+                                "photo": "photolink.com",
+                                "lang": "EN",
+                                "agree_count": 1000,
+                                "disagree_count": 1000
+                            }
+                        }
+                    }
+                ],
+  "chains": [
+                {
+                "id": "123ABC",
+                "name":"Category Name"
+                }
+            ],
+  "date_closed": "1951-01-25",
+  "description": "esse",
+  "distance": 363295,
+  "email": "id tempor cillum",
+  "fax": "velit irure",
+  "features": {
+    "payment": {
+      "credit_cards": {
+        "accepts_credit_cards": {},
+        "discover": {},
+        "visa": {},
+        "diners_club": {},
+        "master_card": {}
+      },
+      "digital_wallet": {
+        "accepts_nfc": {}
+      }
+    },
+    "food_and_drink": {
+      "alcohol": {
+        "beer": {},
+        "byo": {},
+        "cocktails": {},
+        "full_bar": {},
+        "wine": {}
+      },
+      "meals": {
+        "breakfast": {},
+        "brunch": {},
+        "lunch": {},
+        "happy_hour": {},
+        "dessert": {},
+        "dinner": {}
+      }
+    },
+    "services": {
+      "delivery": {},
+      "takeout": {},
+      "drive_through": {},
+      "dine_in": {
+        "reservations": {},
+        "online_reservations": {},
+        "groups_only_reservations": {}
+      }
+    },
+    "amenities": {
+      "restroom": {},
+      "smoking": {},
+      "jukebox": {},
+      "music": {},
+      "live_music": {},
+      "private_room": {},
+      "outdoor_seating": {},
+      "tvs": {},
+      "atm": {},
+      "coat_check": {},
+      "wheelchair_accessible": {},
+      "parking": {
+        "parking": {},
+        "street_parking": {},
+        "valet_parking": {},
+        "public_lot": {},
+        "private_lot": {}
+      }
+    }
+  },
+  "geocodes": {
+    "drop_off": {
+      "latitude": 97285985.29378957,
+      "longitude": 63880460.20587543
+    },
+    "front_door": {
+      "latitude": 7483331.504124597,
+      "longitude": 9466502.1214948
+    },
+    "main": {
+      "latitude": -61490951.28692492,
+      "longitude": 4024131.1683282256
+    },
+    "road": {
+      "latitude": 22941237.016723633,
+      "longitude": 92425903.86424744
+    },
+    "roof": {
+      "latitude": -20723121.95240675,
+      "longitude": -2521635.456674427
+    }
+  },
+  "hours": {
+    "display": "ut elit nulla incididunt fugiat",
+    "is_local_holiday": false,
+    "open_now": false,
+    "regular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am"
+                    }
+                ],
+    "seasonal": [
+                    {
+                        "closed": true,
+                        "end_date": "2022-04-23",
+                        "hours": [
+                            {
+                            "close": "10:00pm",
+                            "day": "1",
+                            "open": "6:00am"
+                            }
+                        ],
+                        "start_date": "2022-04-22"
+                    }
+                ]
+  },
+  "hours_popular": [
+                        {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am"
+                        }
+                    ],
+  "link": "qui ut officia velit non",
+  "location": {
+    "address": "Ut magna ut",
+    "address_extended": "exercitation cupidatat lab",
+    "admin_region": "ad id nostrud exercitation commodo",
+    "census_block": "culpa id est deserunt",
+    "country": "sed exercitation ipsum",
+    "cross_street": "labore est dolore tempor eiusm",
+    "dma": "cillum cupidatat deserunt officia",
+    "formatted_address": "quis anim voluptate labore tempor",
+    "locality": "amet deserunt sunt eiusmod",
+    "neighborhood": ["quis anim"],
+    "po_box": "culpa incididunt amet in",
+    "post_town": "in",
+    "postcode": "sed ",
+    "region": "amet reprehenderit eu Lorem"
+  },
+  "menu": "Ut",
+  "name": "enim ex in",
+  "photos": [
+                {
+                "id": "123455f5b863c0008b1edca",
+                "created_at": "2020-01-14T02:50:07.000Z",
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/12345438_8tJRLpG3PbPVN-Ekde66x8XN7IVVYP__YaS1KmLfntc.png",
+                "width": 2000,
+                "height": 1500,
+                "classifications": [
+                    "food"
+                    ],
+                "tip": {
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": 65410876
+                    }
+                }
+            ],
+  "popularity": 40125204.9393844,
+  "price": 2,
+  "rating": 75497460.46515393,
+  "related_places": {
+    "parent": "lorem ipsom"
+  },
+  "social_media": {
+    "facebook_id": "labore consequat sint mollit",
+    "instagram": "nisi ullam",
+    "twitter": "dolore exercitation est"
+  },
+  "stats": {
+    "total_photos": -85679971,
+    "total_ratings": 54239113,
+    "total_tips": -73824872
+  },
+  "store_id" : "plurubus",
+  "tastes": ["exercitation"],
+  "tel": "123-456-7890",
+  "timezone": "veniam ex exercitation labore",
+  "tips": [
+            {
+            "id": "ullamco qui dolore",
+            "created_at": "1963-08-21T13:57:06.927Z",
+            "text": "eiusmod",
+            "url": "eu commodo ut",
+            "photo": "lorem ipsom",
+            "lang": "nulla",
+            "agree_count": 40683730,
+            "disagree_count": 65410876
+            }
+  ],
+  "verified": false,
+  "website": "dolor cillum exe"
+}
+
+GETFind Nearby Places
+https://api.foursquare.com/v3/places/nearby?query=Chicken&ll=42.008576,-87.8772224&limit=14
+
+Utilize Foursquare's Snap to Place technology to detect where your user's device is and what is around them.
+The endpoint is designed to provide POI tagging that supports a check-in use case. It will intentionally return lower quality results not found in Place Search. It is not intended to replace Place Search as the primary way to search for top, recommended POIs.
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+query
+Chicken
+
+A string to be matched against venue name for this place.
+ll
+42.008576,-87.8772224
+
+The latitude/longitude around which to retrieve place information. This must be specified as latitude,longitude (e.g., ll=41.8781,-87.6298). If you do not specify ll, the server will attempt to retrieve the IP address from the request, and geolocate that IP address.
+limit
+14
+
+The number of results to return, up to 50. Defaults to 10.
+fields
+
+Indicate which fields to return in the response, separated by commas. If no fields are specified, all Core Fields are returned by default.
+
+For a complete list of returnable fields, refer to the Response Fields page.
+hacc
+altitude
+53052685.317618966
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/places/nearby?fields=eu%20do%20voluptate%20enim&ll=eu%20do%20voluptate%20enim&hacc=53052685.317618966&altitude=53052685.317618966&query=eu%20do%20voluptate%20enim&limit=14'
+
+200 OK
+Response
+
+json
+
+{
+    "results": [
+        {
+            "fsq_id": "12345abc8495fc2ca40f3dde",
+            "categories": [
+                {
+                    "id": 13068,
+                    "name": "American Restaurant",
+                    "icon": {
+                            "id": "1234",
+                            "created_at": "2022-04-23T18:25:43.511Z",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotdog_",
+                            "suffix": ".png",
+                            "width": 1500,
+                            "height": 1500,
+                            "classifications":["food"],
+                            "tip": {
+                                "id": "123ABC",
+                                "created_at": "2022-04-23T18:25:43.511Z",
+                                "text": "A POI tip",
+                                "url": "somelink.com",
+                                "photo": "photolink.com",
+                                "lang": "EN",
+                                "agree_count": 1000,
+                                "disagree_count": 1000
+                            }
+                        }
+                }
+            ],
+            "chains": [
+                {
+                    "id": "123ABC",
+                    "name": "Chain Name"
+                }
+            ],
+            "date_closed": "2022-02-22",
+            "description": "a poi description",
+            "distance": 5511,
+            "email": "someone@site.com",
+            "fax": "123-456-7890",
+            "features":{
+                "payment": {
+                "credit_cards": {
+                "accepts_credit_cards": {},
+                "discover": {},
+                "visa": {},
+                "diners_club": {},
+                "master_card": {}
+            },
+            "digital_wallet": {
+                "accepts_nfc": {}
+            }
+            },
+            "food_and_drink": {
+            "alcohol": {
+                "beer": {},
+                "byo": {},
+                "cocktails": {},
+                "full_bar": {},
+                "wine": {}
+            },
+            "meals": {
+                "breakfast": {},
+                "brunch": {},
+                "lunch": {},
+                "happy_hour": {},
+                "dessert": {},
+                "dinner": {}
+            }
+            },
+            "services": {
+            "delivery": {},
+            "takeout": {},
+            "drive_through": {},
+            "dine_in": {
+                "reservations": {},
+                "online_reservations": {},
+                "groups_only_reservations": {}
+            }
+            },
+            "amenities": {
+                "restroom": {},
+                "smoking": {},
+                "jukebox": {},
+                "music": {},
+                "live_music": {},
+                "private_room": {},
+                "outdoor_seating": {},
+                "tvs": {},
+                "atm": {},
+                "coat_check": {},
+                "wheelchair_accessible": {},
+                "parking": {
+                    "parking": {},
+                    "street_parking": {},
+                    "valet_parking": {},
+                    "public_lot": {},
+                    "private_lot": {}
+                }
+            }
+        },
+            "geocodes": {
+                "drop_off": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "front_door": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "main": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "road": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "roof": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                }
+            },
+            "hours": {
+                "display": "lorem",
+                "is_local_holiday": false,
+                "open_now": true,
+                "regular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am"
+                    }
+                ],
+                "seasonal":[
+                    {
+                        "closed": "true",
+                        "end_date": "2023-01-15",
+                        "hours": [
+                            {
+                                "close": "10:00pm",
+                                "day": "1",
+                                "open": "6:00am" 
+                            }
+                        ],
+                    "start_date": "2023-01-14"
+                    }
+                ]
+            },
+            "hours_popular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am" 
+                    }
+            ],
+            "link": "/v3/places/12345abc8495fc2ca40f3dde",
+            "location": {
+                "address": "1234 W Street Rd",
+                "address_extended": "Suite 25",
+                "admin_region": "lorem ipsom",
+                "census_block": "170318060012000",
+                "country": "US",
+                "cross_street": "Some St",
+                "dma": "City",
+                "formatted_address": "1234 W Street Rd, Niles, IL 12345",
+                "locality": "Niles",
+                "neighborhood": "Niles",
+                "po_box": "PO Box 123",
+                "postcode": "12345",
+                "region": "IL"
+            },
+            "menu": "lorem ipsum",
+            "name": "POI Name",
+            "photos": [
+                {
+                "id": "123455f5b863c0008b1edca",
+                "created_at": "2020-01-14T02:50:07.000Z",
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/12345438_8tJRLpG3PbPVN-Ekde66x8XN7IVVYP__YaS1KmLfntc.png",
+                "width": 2000,
+                "height": 1500,
+                "classifications": [
+                    "food"
+                    ],
+                "tip": {
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": 65410876
+                    }
+                }               
+            ],
+            "popularity": 1234.12,
+            "price": 4,
+            "rating": 123.50,
+            "related_places": {
+                "parent": "lorem"
+            },
+            "social_media": {
+                "facebook_id": "lorem",
+                "instagram": "ipsom",
+                "twitter": "plurubus"
+            },
+            "stats": {
+                "total_photos": 20,
+                "total_ratings": 50,
+                "total_tips": 25
+            },
+            "tastes": [
+                "lorem"
+            ],
+            "tel": "123-456-7890",
+            "timezone": "America/Chicago",
+            "tips": [
+                        {
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": -65410876
+                    }
+            ],
+            "verified": true,
+            "website": "www.site.com"
+        }
+    ]
+}
+
+POSTReport Nearby Place Selection
+https://api.foursquare.com/v3/place/select?request_id=63f78c917213564bc075a8e9&fsq_id=4e507dc81495fc2ca40f3dde&select_context=nearby
+
+Report the selection of a place as the result of a Nearby Places request.
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+request_id
+63f78c917213564bc075a8e9
+
+The request ID pulled from the header of the /v3/places/nearby request that generated the list of places to show the user
+fsq_id
+4e507dc81495fc2ca40f3dde
+
+The place ID of the place which was selected by the user in the UI
+select_context
+nearby
+
+Specify the use case for specified request
+delayed
+Example
+success
+Request
+cURL
+
+curl --location --request POST 'https://api.foursquare.com/v3/place/select?request_id=eu%20do%20voluptate%20enim&fsq_id=eu%20do%20voluptate%20enim&select_context=eu%20do%20voluptate%20enim&delayed=true'
+
+200 OK
+Response
+
+json
+
+{
+    "response": "success"
+}
+
+GETGet Place Photos
+https://api.foursquare.com/v3/places/:fsq_id/photos?limit=25&sort=NEWEST
+
+Retrieve photos for a FSQ Place using the fsq_id. 
+
+To retrieve photos from a Photos response, learn how to assemble photo URLs. 
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+limit
+25
+
+The specified number of photos per page. Returns 10 photos by default, up to a maximum number of 50.
+sort
+NEWEST
+
+Specifies the order in which results are listed. Possible values are:
+
+    popular (default) - sorts results based on their popularity among Foursquare users
+    newest - sorts results from most recently added to least recently added
+
+classifications
+
+Restricts the results to photos matching the specified classifications, separated by a comma. Possible values are:
+
+    food - photos of food
+    indoor - photos of indoors
+    menu - photos of menus
+    outdoor - photos of storefronts, outdoors, and exteriors
+
+Path Variables
+fsq_id
+4c6b0b116d390f4708ed099a
+
+(Required) A unique string identifier for a FSQ Place (formerly known as Venue ID). E.g., Foursquare HQ's fsq_id = 5a187743ccad6b307315e6fe
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/places/eu do voluptate enim/photos?limit=-80339055&sort=NEWEST&classifications=eu%20do%20voluptate%20enim'
+
+200 OK
+Response
+
+json
+
+[
+  {
+        "id": "123455f5b863c0008b1edca",
+        "created_at": "2020-01-14T02:50:07.000Z",
+        "prefix": "https://fastly.4sqi.net/img/general/",
+        "suffix": "/12345438_8tJRLpG3PbPVN-Ekde66x8XN7IVVYP__YaS1KmLfntc.png",
+        "width": 2000,
+        "height": 1500,
+        "classifications": [
+            "food"
+        ],
+        "tip": {
+                "id": "123ABC",
+                "created_at": "2022-04-23T18:25:43.511Z",
+                "text": "A POI tip",
+                "url": "somelink.com",
+                "photo": "photolink.com",
+                "lang": "EN",
+                "agree_count": 1000,
+                "disagree_count": 1000
+                }
+
+    }
+]
+
+GETGet Place Tips
+https://api.foursquare.com/v3/places/:fsq_id/tips?limit=14&sort=NEWEST
+
+Retrieve tips for a FSQ Place using the fsq_id.
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+limit
+14
+
+The specified number of tips per page. Returns 10 tips by default, up to a maximum number of 50.
+fields
+
+Indicate which fields to return in the response, separated by commas. Supported fields are:
+
+    id - the ID of the tip
+    created_at - when was the tip created
+    text - what does the tip actually say?
+    lang - what language was the tip created in
+
+Default fields if this param is omitted are "id", "created_at", and "text".
+
+sort
+NEWEST
+
+Specifies the order in which results are listed. Possible values are:
+
+    popular (default) - sorts results based on their popularity among Foursquare users
+    newest - sorts results from most recently added to least recently added
+
+Path Variables
+fsq_id
+4c6b0b116d390f4708ed099a
+
+(Required) A unique string identifier for a FSQ Place (formerly known as Venue ID). E.g., Foursquare HQ's fsq_id = 5a187743ccad6b307315e6fe
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/places/eu do voluptate enim/tips?limit=14&fields=eu%20do%20voluptate%20enim&sort=NEWEST'
+
+200 OK
+Response
+
+json
+
+[
+  {
+    "id": "ullamco qui dolore",
+    "created_at": "1963-08-21T13:57:06.927Z",
+    "text": "eiusmod",
+    "url": "eu commodo ut",
+    "photo": {
+      "id": "sunt fugiat ullamco proident ut",
+      "created_at": "2004-05-31T22:11:06.940Z",
+      "prefix": "ut aliqua est occaecat non",
+      "suffix": "qui",
+      "width": -63605912,
+      "height": 85498764,
+      "classifications": [
+          "food"
+          ],
+      "tip": {
+        "id": "sunt",
+        "created_at": "1973-05-08T18:42:12.052Z",
+        "text": "minim ut",
+        "url": "quis in consequat",
+        "photo": {},
+        "lang": "veniam velit fugiat consequat",
+        "agree_count": -31308722,
+        "disagree_count": 53982421
+      }
+    },
+    "lang": "nulla",
+    "agree_count": 40683730,
+    "disagree_count": -65410876
+  }
+]
+
+GETGet Address Details
+https://api.foursquare.com/v3/address/:fsq_addr_id?session_token={{session_token}}
+
+Retrieve details for any address including non-Places. For addresses that do include FSQ Places, the response will include a directory field that contains a list of said FSQ Places.
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+session_token
+{{session_token}}
+
+A user-generated token to identify a session for billing purposes. Learn more about session tokens.
+Path Variables
+fsq_addr_id
+US-5553415700000730c86d-1564
+
+(Required) A unique string identifier used to retrieve further details for an address result returned by the autocomplete endpoint. Note this id format may change or be updated in the future and therefore should be treated as temporary.
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/address/eu do voluptate enim?session_token=eu%20do%20voluptate%20enim'
+
+200 OK
+Response
+
+json
+
+{
+  "fsq_addr_id": "eiusmod ex consectetur deserunt minim",
+  "location": {
+    "address": "est proident",
+    "address_extended": "nisi consectetur in",
+    "admin_region": "dolor",
+    "census_block": "o",
+    "country": "dolor cupidatat Lorem",
+    "cross_street": "Ut",
+    "dma": "cillum",
+    "formatted_address": "deserunt quis sunt ut Ut",
+    "locality": "adipisicing ullamco est",
+    "neighborhood": ["Logan"],
+    "po_box": "nisi officia aute laborum",
+    "post_town": "veniam",
+    "postcode": "dolor irure qui adipisicing",
+    "region": "Excepteur Ut fugiat"
+  },
+  "geocodes": {
+    "drop_off": {
+      "latitude": -40870743.673540175,
+      "longitude": -21385851.49348949
+    },
+    "front_door": {
+      "latitude": 68496273.28520209,
+      "longitude": -48985663.29279288
+    },
+    "main": {
+      "latitude": -26228200.130838975,
+      "longitude": -50588777.00065274
+    },
+    "road": {
+      "latitude": -2627741.44586055,
+      "longitude": 55343021.424949914
+    },
+    "roof": {
+      "latitude": -47294802.653859414,
+      "longitude": 71654124.64146236
+    }
+  },
+  "directory": [
+      {
+    "fsq_id": "1234e9b3904a59368cb4a9e",
+            "categories": [
+                {
+                    "id": 10004,
+                    "name": "Art Gallery",
+                    "icon": {
+                            "id": "1234",
+                            "created_at": "2022-04-23T18:25:43.511Z",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotdog_",
+                            "suffix": ".png",
+                            "width": 1500,
+                            "height": 1500,
+                            "classifications":["food"],
+                            "tip": {
+                                "id": "123ABC",
+                                "created_at": "2022-04-23T18:25:43.511Z",
+                                "text": "A POI tip",
+                                "url": "somelink.com",
+                                "photo": "photolink.com",
+                                "lang": "EN",
+                                "agree_count": 1000,
+                                "disagree_count": 1000
+                            }
+                        }
+                }
+            ],
+            "chains": [
+                {
+                    "id": "123ABC",
+                    "name": "Chain Name"
+                }
+            ],
+            "date_closed": "2022-02-22",
+            "description": "a poi description",
+            "distance": 5511,
+            "email": "someone@site.com",
+            "fax": "123-456-7890",
+            "features":{
+                "payment": {
+                "credit_cards": {
+                "accepts_credit_cards": {},
+                "discover": {},
+                "visa": {},
+                "diners_club": {},
+                "master_card": {}
+            },
+            "digital_wallet": {
+                "accepts_nfc": {}
+            }
+            },
+            "food_and_drink": {
+            "alcohol": {
+                "beer": {},
+                "byo": {},
+                "cocktails": {},
+                "full_bar": {},
+                "wine": {}
+            },
+            "meals": {
+                "breakfast": {},
+                "brunch": {},
+                "lunch": {},
+                "happy_hour": {},
+                "dessert": {},
+                "dinner": {}
+            }
+            },
+            "services": {
+            "delivery": {},
+            "takeout": {},
+            "drive_through": {},
+            "dine_in": {
+                "reservations": {},
+                "online_reservations": {},
+                "groups_only_reservations": {}
+            }
+            },
+            "amenities": {
+                "restroom": {},
+                "smoking": {},
+                "jukebox": {},
+                "music": {},
+                "live_music": {},
+                "private_room": {},
+                "outdoor_seating": {},
+                "tvs": {},
+                "atm": {},
+                "coat_check": {},
+                "wheelchair_accessible": {},
+                "parking": {
+                    "parking": {},
+                    "street_parking": {},
+                    "valet_parking": {},
+                    "public_lot": {},
+                    "private_lot": {}
+                }
+            }
+        },
+        "geocodes": {
+                "drop_off": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "front_door": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "main": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "road": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                },
+                "roof": {
+                    "latitude": 42.054377,
+                    "longitude": -87.851752
+                }
+            },
+            "hours": {
+                "display": "lorem",
+                "is_local_holiday": false,
+                "open_now": true,
+                "regular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am"
+                    }
+                ],
+                "seasonal":[
+                    {
+                        "closed": "true",
+                        "end_date": "2023-01-15",
+                        "hours": [
+                            {
+                                "close": "10:00pm",
+                                "day": "1",
+                                "open": "6:00am" 
+                            }
+                        ],
+                    "start_date": "2023-01-14"
+                    }
+                ]
+            },
+            "hours_popular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am" 
+                    }
+            ],
+            "link": "/v3/places/12347e9b3904a59368cb4a9e",
+            "location": {
+                "address": "1234 W Street Rd",
+                "address_extended": "Suite 25",
+                "admin_region": "lorem ipsom",
+                "census_block": "170318060012000",
+                "country": "US",
+                "cross_street": "Some St",
+                "dma": "City",
+                "formatted_address": "1234 W Street Rd, Niles, IL 12345",
+                "locality": "Niles",
+                "neighborhood": "Niles",
+                "po_box": "PO Box 123",
+                "postcode": "12345",
+                "region": "IL"
+            },
+            "menu": "lorem ipsom",
+            "name": "POI Name",
+            "photos": [
+                {
+                "id": "123455f5b863c0008b1edca",
+                "created_at": "2020-01-14T02:50:07.000Z",
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/12345438_8tJRLpG3PbPVN-Ekde66x8XN7IVVYP__YaS1KmLfntc.png",
+                "width": 2000,
+                "height": 1500,
+                "classifications": [
+                    "food"
+                    ],
+                "tip": {
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": 65410876
+                    }
+                }
+            ],
+            "popularity": 100.20,
+            "price": 2,
+            "rating":  200.405,
+            "related_places": {
+                "parent": "lorem"
+            },
+            "social_media": {
+                "facebook_id": "lorem",
+                "instagram": "ipsom",
+                "twitter": "plurubus"
+            },
+            "stats": {
+                "total_photos": 20,
+                "total_ratings": 50,
+                "total_tips": 25
+            },
+            "tastes": ["exercitation"],
+  "tel": "123-456-7890",
+  "timezone": "veniam ex exercitation labore",
+  "tips": [
+            {
+            "id": "ullamco qui dolore",
+            "created_at": "1963-08-21T13:57:06.927Z",
+            "text": "eiusmod",
+            "url": "eu commodo ut",
+            "photo": "lorem ipsom",
+            "lang": "nulla",
+            "agree_count": 40683730,
+            "disagree_count": 65410876
+            }
+  ],
+  "verified": false,
+  "website": "dolor cillum exe"
+    }
+  ]
+}
+
+GETPlace Match
+https://api.foursquare.com/v3/places/match?name=Als Beef&address=548 N Wells St&city=Chicago&state=IL&cc=US&ll=41.8942505,-87.6380201
+
+Return the Foursquare record of a POI (via FSQ_ID) given a Name and Location. Provide a Location by using all the Address parameters, or by LL. 
+Authorization API Key
+This request is using an authorization helper from collection Places API
+Query Params
+name
+Als Beef
+
+(Required) Name of the place to match.
+address
+548 N Wells St
+
+Street address of the place to match (e.g. 1060 W Addison St).
+city
+Chicago
+
+City, or Locality, where the place is located (e.g. Chicago).
+state
+IL
+
+State, or Region, where the place is located (e.g. Illinois).
+postalCode
+
+The postal code for the address where the place is located (e.g. 10012).
+cc
+US
+
+The 2-digit country code where the place is located (e.g. US).
+ll
+41.8942505,-87.6380201
+
+The latitude/longitude of the venue location. This must be specified as latitude,longitude (e.g., ll=41.8781,-87.6298).
+fields
+
+Indicate which fields to return in the response, separated by commas. If no fields are specified, all Core Fields are returned by default.
+
+For a complete list of returnable fields, refer to the Response Fields page.
+Example
+success
+Request
+cURL
+
+curl --location 'https://api.foursquare.com/v3/places/match?name=eu%20do%20voluptate%20enim&address=eu%20do%20voluptate%20enim&city=eu%20do%20voluptate%20enim&state=eu%20do%20voluptate%20enim&postalCode=eu%20do%20voluptate%20enim&cc=eu%20do%20voluptate%20enim&ll=eu%20do%20voluptate%20enim&fields=sed%20aute%20nisi%20ea%20in&fields=in%20cillum%20irure'
+
+200 OK
+Response
+
+json
+
+{
+  "place": {
+    "fsq_id": "incidi",
+    "categories": [
+            {
+                "id": 13058,
+                "name": "Hot Dog Joint",
+                "icon": {
+                    "id": "1234",
+                    "created_at": "2022-04-23T18:25:43.511Z",
+                    "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotdog_",
+                    "suffix": ".png",
+                    "width": 1500,
+                    "height": 1500,
+                    "classifications":["food"],
+                    "tip": {
+                        "id": "123ABC",
+                        "created_at": "2022-04-23T18:25:43.511Z",
+                        "text": "A POI tip",
+                        "url": "somelink.com",
+                        "photo": "photolink.com",
+                        "lang": "EN",
+                        "agree_count": 1000,
+                        "disagree_count": 1000
+                    }
+                }
+            }
+        ],
+    "chains": [
+        {
+            "id": "chain id",
+            "name": "chain name"
+        }
+    ],
+    "date_closed": "1983-08-26",
+    "description": "commodo",
+    "distance": -73390979,
+    "email": "exercitation nulla Lorem",
+    "fax": "amet",
+    "features": {
+      "payment": {
+        "credit_cards": {
+          "accepts_credit_cards": {},
+          "discover": {},
+          "visa": {},
+          "diners_club": {},
+          "master_card": {}
+        },
+        "digital_wallet": {
+          "accepts_nfc": {}
+        }
+      },
+      "food_and_drink": {
+        "alcohol": {
+          "beer": {},
+          "byo": {},
+          "cocktails": {},
+          "full_bar": {},
+          "wine": {}
+        },
+        "meals": {
+          "breakfast": {},
+          "brunch": {},
+          "lunch": {},
+          "happy_hour": {},
+          "dessert": {},
+          "dinner": {}
+        }
+      },
+      "services": {
+        "delivery": {},
+        "takeout": {},
+        "drive_through": {},
+        "dine_in": {
+          "reservations": {},
+          "online_reservations": {},
+          "groups_only_reservations": {}
+        }
+      },
+      "amenities": {
+        "restroom": {},
+        "smoking": {},
+        "jukebox": {},
+        "music": {},
+        "live_music": {},
+        "private_room": {},
+        "outdoor_seating": {},
+        "tvs": {},
+        "atm": {},
+        "coat_check": {},
+        "wheelchair_accessible": {},
+        "parking": {
+          "parking": {},
+          "street_parking": {},
+          "valet_parking": {},
+          "public_lot": {},
+          "private_lot": {}
+        }
+      }
+    },
+    "geocodes": {
+      "drop_off": {
+        "latitude": -12755420.977023974,
+        "longitude": -80757900.65045707
+      },
+      "front_door": {
+        "latitude": -18456966.685907036,
+        "longitude": -38647138.44662444
+      },
+      "main": {
+        "latitude": -70453935.44525354,
+        "longitude": -58746563.75083727
+      },
+      "road": {
+        "latitude": -437388.13509333134,
+        "longitude": 31862029.862640902
+      },
+      "roof": {
+        "latitude": -18398765.733972102,
+        "longitude": -86874170.27537885
+      }
+    },
+    "hours": {
+      "display": "exercitation ut",
+      "is_local_holiday": true,
+      "open_now": false,
+      "regular": [
+                    {
+                        "close": "10:00pm",
+                        "day": "1",
+                        "open": "6:00am"
+                    }
+                ],
+                "seasonal":[
+                    {
+                        "closed": "true",
+                        "end_date": "2023-01-15",
+                        "hours": [
+                            {
+                                "close": "10:00pm",
+                                "day": "1",
+                                "open": "6:00am" 
+                            }
+                        ],
+                    "start_date": "2023-01-14"
+                    }
+                ]
+    },
+    "hours_popular": [
+        {
+            "close": "ispom",
+            "day": "7",
+            "open": "pluram"
+
+        }
+    ],
+    "link": "amet elit non",
+    "location": {
+      "address": "dolor ut sed consequat",
+      "address_extended": "eu nostrud labore ex",
+      "admin_region": "labore et ",
+      "census_block": "esse tempor",
+      "country": "incididunt",
+      "cross_street": "quis officia ipsum",
+      "dma": "cupidatat Ut",
+      "formatted_address": "ullamco mollit veniam ut",
+      "locality": "aliqua fugiat pariat",
+      "neighborhood": ["neighborhood-name"],
+      "po_box": "dolor",
+      "post_town": "cupidatat",
+      "postcode": "cupidatat enim tempor laboris pariatur",
+      "region": "velit"
+    },
+    "menu": "veniam sed",
+    "name": "Duis fugiat consectetur aliqua",
+    "photos": [
+                {
+                "id": "123455f5b863c0008b1edca",
+                "created_at": "2020-01-14T02:50:07.000Z",
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/12345438_8tJRLpG3PbPVN-Ekde66x8XN7IVVYP__YaS1KmLfntc.png",
+                "width": 2000,
+                "height": 1500,
+                "classifications": [
+                    "food"
+                    ],
+                "tip": {
+                        "id": "ullamco qui dolore",
+                        "created_at": "1963-08-21T13:57:06.927Z",
+                        "text": "eiusmod",
+                        "url": "eu commodo ut",
+                        "photo": "lorem ipsom",
+                        "lang": "nulla",
+                        "agree_count": 40683730,
+                        "disagree_count": 65410876
+                    }
+                }
+            ],
+    "popularity": 9787900.651389062,
+    "price": 79729915,
+    "rating": 62872237.01657069,
+    "related_places": {
+      "parent": "lorem"
+    },
+    "social_media": {
+      "facebook_id": "consectetur ullamco",
+      "instagram": "laborum consequat",
+      "twitter": "laborum sin"
+    },
+    "stats": {
+      "total_photos": -29757945,
+      "total_ratings": -21632394,
+      "total_tips": -62357271
+    },
+    "store_id" : "plurubus",
+    "tastes": ["lorum"],
+    "tel": "123-456-7890",
+    "timezone": "dolore",
+    "tips": [
+        {
+        "id": "sed",
+        "created_at": "1945-01-04T21:17:14.955Z",
+        "text": "mollit sit",
+        "url": "incididunt ut occaecat in dolor",
+        "photo": "lorem ipsom",
+        "lang": "consequat consectetur elit amet",
+        "agree_count": 62055063,
+        "disagree_count": -56476707
+      }
+      ],
+    "verified": false,
+    "website": "esse in"
+  },
+  "match_score": -55249941.96601081
+}
+
+Creator
+Foursquare APIs
+Foursquare APIs
+JUMP TO
+Introduction
+Foursquare Places APIs
+GET
+Place Search
+GET
+Get Autocomplete Results
+GET
+Get Place Details
+GET
+Find Nearby Places
+POST
+Report Nearby Place Selection
+GET
+Get Place Photos
+GET
+Get Place Tips
+GET
+Get Address Details
+GET
+Place Match
+Online
+
