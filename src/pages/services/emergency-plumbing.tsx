@@ -49,27 +49,55 @@ export default function EmergencyPlumbing() {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12">Why Choose Our Emergency Service?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">⚡</div>
-                <h3 className="text-xl font-bold mb-2">Fast Response</h3>
-                <p className="text-gray-600">
-                  Our emergency plumbers aim to reach you within 1 hour in London
-                </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">24/7 Availability</h3>
+                <p>Available day and night, including weekends and holidays. We're always here when you need us most.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">🔧</div>
-                <h3 className="text-xl font-bold mb-2">Expert Plumbers</h3>
-                <p className="text-gray-600">
-                  Fully qualified and experienced emergency plumbing specialists
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Fast Response Time</h3>
+                <p>Our emergency plumbers aim to reach you within 1 hour of your call in most London areas.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">💰</div>
-                <h3 className="text-xl font-bold mb-2">Clear Pricing</h3>
-                <p className="text-gray-600">
-                  Transparent pricing with no hidden charges or call-out fees
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Fully Equipped Vans</h3>
+                <p>Our vans carry all necessary tools and common parts to fix most emergencies on the first visit.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services & Pricing Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center mb-12">Our Emergency Services & Pricing</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Emergency Services Include:</h3>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Burst pipe repairs</li>
+                  <li>Blocked toilets and drains</li>
+                  <li>Leaking taps and pipes</li>
+                  <li>Boiler breakdowns</li>
+                  <li>Water heater issues</li>
+                  <li>Flooding problems</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Transparent Pricing</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <span className="font-semibold">Call Out Fee:</span> From £85
+                  </li>
+                  <li>
+                    <span className="font-semibold">Hourly Rate:</span> From £95/hour
+                  </li>
+                  <li>
+                    <span className="font-semibold">Additional Hours:</span> From £75/hour
+                  </li>
+                  <li className="text-sm text-gray-600">
+                    * Prices may vary depending on time of day and complexity of work
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -119,6 +147,92 @@ export default function EmergencyPlumbing() {
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Service Areas Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center mb-12">Areas We Cover</h2>
+            <div className="grid md:grid-cols-5 gap-4 mb-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Central London</h3>
+                <ul className="space-y-2">
+                  <li>Westminster</li>
+                  <li>City of London</li>
+                  <li>Covent Garden</li>
+                  <li>Mayfair</li>
+                  <li>Soho</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">North London</h3>
+                <ul className="space-y-2">
+                  <li>Islington</li>
+                  <li>Camden</li>
+                  <li>Finsbury Park</li>
+                  <li>Highgate</li>
+                  <li>Hampstead</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">South London</h3>
+                <ul className="space-y-2">
+                  <li>Southwark</li>
+                  <li>Lambeth</li>
+                  <li>Greenwich</li>
+                  <li>Brixton</li>
+                  <li>Peckham</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">East London</h3>
+                <ul className="space-y-2">
+                  <li>Tower Hamlets</li>
+                  <li>Hackney</li>
+                  <li>Newham</li>
+                  <li>Stratford</li>
+                  <li>Canary Wharf</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">West London</h3>
+                <ul className="space-y-2">
+                  <li>Hammersmith</li>
+                  <li>Fulham</li>
+                  <li>Chiswick</li>
+                  <li>Ealing</li>
+                  <li>Notting Hill</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-center text-gray-600">
+              And many more areas across London! Contact us to check if we cover your location.
+            </p>
+          </div>
+        </section>
+
+        {/* Call to Action Section */}
+        <section className="py-16 bg-blue-600 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-8">Need Emergency Plumbing Help?</h2>
+            <p className="text-xl mb-8">Our emergency plumbers are available 24/7 to help you with any plumbing crisis.</p>
+            <Link
+              href="tel:020XXXXXXXX"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold 
+              hover:bg-gray-100 transition-all duration-200 inline-block shadow-lg 
+              transform hover:scale-105 mr-4"
+            >
+              Call Now
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold 
+              hover:bg-white hover:text-blue-600 transition-all duration-200 inline-block shadow-lg 
+              transform hover:scale-105"
+            >
+              Contact Us
+            </Link>
           </div>
         </section>
 

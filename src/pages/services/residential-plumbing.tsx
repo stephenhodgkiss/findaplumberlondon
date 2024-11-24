@@ -44,158 +44,147 @@ export default function ResidentialPlumbing() {
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Why Choose Us Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Why Choose Our Residential Service?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">🏠</div>
-                <h3 className="text-xl font-bold mb-2">Home Experts</h3>
-                <p className="text-gray-600">
-                  Specialized in residential plumbing solutions
-                </p>
+            <h2 className="text-4xl font-bold text-center mb-12">Why Choose Our Residential Plumbing Service?</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Experienced Team</h3>
+                <p>Professional residential plumbers with years of experience in home plumbing solutions.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">⭐</div>
-                <h3 className="text-xl font-bold mb-2">Quality Service</h3>
-                <p className="text-gray-600">
-                  Professional and reliable home plumbing care
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Quality Guaranteed</h3>
+                <p>All our work comes with a satisfaction guarantee and warranty for your peace of mind.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">🛠️</div>
-                <h3 className="text-xl font-bold mb-2">Full Service</h3>
-                <p className="text-gray-600">
-                  Complete range of home plumbing solutions
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Transparent Pricing</h3>
+                <p>Clear, upfront pricing with no hidden fees or surprise charges.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50">
+        {/* Services & Pricing Section */}
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Our Residential Services
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Leak Repairs</h3>
-                <p className="text-gray-600">
-                  Fast and effective leak detection and repair
-                </p>
+            <h2 className="text-4xl font-bold text-center mb-12">Our Residential Services & Pricing</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Home Services Include:</h3>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Bathroom and kitchen plumbing</li>
+                  <li>Leak detection and repair</li>
+                  <li>Pipe installation and replacement</li>
+                  <li>Boiler services and installation</li>
+                  <li>Water heater maintenance</li>
+                  <li>Drain cleaning and repair</li>
+                </ul>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Bathroom Plumbing</h3>
-                <p className="text-gray-600">
-                  Installation and repair of all bathroom fixtures
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Kitchen Plumbing</h3>
-                <p className="text-gray-600">
-                  Expert kitchen plumbing installations and repairs
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Pipe Work</h3>
-                <p className="text-gray-600">
-                  Installation and repair of home pipe systems
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Water Heaters</h3>
-                <p className="text-gray-600">
-                  Water heater installation and maintenance
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Fixture Installation</h3>
-                <p className="text-gray-600">
-                  Professional installation of plumbing fixtures
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Residential Rates</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <span className="font-semibold">Standard Call Out:</span> From £75
+                  </li>
+                  <li>
+                    <span className="font-semibold">Hourly Rate:</span> From £85/hour
+                  </li>
+                  <li>
+                    <span className="font-semibold">Fixed Price Jobs:</span> Available on request
+                  </li>
+                  <li className="text-sm text-gray-600">
+                    * All prices include VAT. Additional charges may apply for parts.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Areas Section */}
-        <section className="py-20">
+        {/* Service Areas Section */}
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12">Areas We Cover</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <Link
-                href="/areas/central-london/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Central London
-              </Link>
-              <Link
-                href="/areas/north-london/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                North London
-              </Link>
-              <Link
-                href="/areas/south-london/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                South London
-              </Link>
-              <Link
-                href="/areas/east-london/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                East London
-              </Link>
-              <Link
-                href="/areas/west-london/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                West London
-              </Link>
-              <Link
-                href="/areas/camden/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Camden
-              </Link>
-              <Link
-                href="/areas/islington/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Islington
-              </Link>
-              <Link
-                href="/areas/hackney/residential-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Hackney
-              </Link>
+            <div className="grid md:grid-cols-5 gap-4 mb-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Central London</h3>
+                <ul className="space-y-2">
+                  <li>Westminster</li>
+                  <li>City of London</li>
+                  <li>Covent Garden</li>
+                  <li>Mayfair</li>
+                  <li>Soho</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">North London</h3>
+                <ul className="space-y-2">
+                  <li>Islington</li>
+                  <li>Camden</li>
+                  <li>Finsbury Park</li>
+                  <li>Highgate</li>
+                  <li>Hampstead</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">South London</h3>
+                <ul className="space-y-2">
+                  <li>Southwark</li>
+                  <li>Lambeth</li>
+                  <li>Greenwich</li>
+                  <li>Brixton</li>
+                  <li>Peckham</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">East London</h3>
+                <ul className="space-y-2">
+                  <li>Tower Hamlets</li>
+                  <li>Hackney</li>
+                  <li>Newham</li>
+                  <li>Stratford</li>
+                  <li>Canary Wharf</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">West London</h3>
+                <ul className="space-y-2">
+                  <li>Hammersmith</li>
+                  <li>Fulham</li>
+                  <li>Chiswick</li>
+                  <li>Ealing</li>
+                  <li>Notting Hill</li>
+                </ul>
+              </div>
             </div>
+            <p className="text-center text-gray-600">
+              Serving homes across all London areas. Contact us to book a service in your location.
+            </p>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-blue-600">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">Need a Residential Plumber?</h2>
-              <p className="text-xl mb-8">
-                Our expert plumbers are ready to help with all your home plumbing needs.
-                Contact us now for professional service.
-              </p>
-              {/* <Link
-                href="tel:020XXXXXXXX"
-                className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold 
-                hover:bg-blue-50 transition-all duration-200 inline-block shadow-lg 
-                transform hover:scale-105"
-              >
-                Call Now
-              </Link> */}
-            </div>
+        {/* Call to Action Section */}
+        <section className="py-16 bg-blue-600 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-8">Need a Residential Plumber?</h2>
+            <p className="text-xl mb-8">Book a plumber for your home today. Fast, reliable service guaranteed.</p>
+            <Link
+              href="tel:020XXXXXXXX"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold 
+              hover:bg-gray-100 transition-all duration-200 inline-block shadow-lg 
+              transform hover:scale-105 mr-4"
+            >
+              Call Now
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold 
+              hover:bg-white hover:text-blue-600 transition-all duration-200 inline-block shadow-lg 
+              transform hover:scale-105"
+            >
+              Book Online
+            </Link>
           </div>
         </section>
       </main>

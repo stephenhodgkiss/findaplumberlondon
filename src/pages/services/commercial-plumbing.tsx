@@ -44,158 +44,147 @@ export default function CommercialPlumbingPage() {
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Why Choose Us Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Why Choose Our Commercial Service?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">🏢</div>
-                <h3 className="text-xl font-bold mb-2">Business Experts</h3>
-                <p className="text-gray-600">
-                  Specialized in commercial plumbing solutions
-                </p>
+            <h2 className="text-4xl font-bold text-center mb-12">Why Choose Our Commercial Plumbing Service?</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Expert Commercial Team</h3>
+                <p>Dedicated commercial plumbers with extensive experience in business and industrial settings.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">⚡</div>
-                <h3 className="text-xl font-bold mb-2">Minimal Disruption</h3>
-                <p className="text-gray-600">
-                  Fast service to keep your business running
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Minimal Disruption</h3>
+                <p>We work around your business hours to minimize impact on your operations.</p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                <div className="text-4xl mb-4">📋</div>
-                <h3 className="text-xl font-bold mb-2">Compliance</h3>
-                <p className="text-gray-600">
-                  Full compliance with commercial regulations
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Full Service Coverage</h3>
+                <p>From routine maintenance to emergency repairs, we handle all commercial plumbing needs.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50">
+        {/* Services & Pricing Section */}
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Our Commercial Services
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">System Installation</h3>
-                <p className="text-gray-600">
-                  Complete commercial plumbing system installation
-                </p>
+            <h2 className="text-4xl font-bold text-center mb-12">Our Commercial Services & Pricing</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Commercial Services Include:</h3>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Commercial boiler installation and repair</li>
+                  <li>Industrial pipe systems</li>
+                  <li>Water heater maintenance</li>
+                  <li>Commercial kitchen plumbing</li>
+                  <li>Preventive maintenance programs</li>
+                  <li>Emergency commercial repairs</li>
+                </ul>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Emergency Repairs</h3>
-                <p className="text-gray-600">
-                  24/7 emergency commercial plumbing repairs
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Maintenance</h3>
-                <p className="text-gray-600">
-                  Regular maintenance and servicing plans
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Compliance Checks</h3>
-                <p className="text-gray-600">
-                  Regular inspections and compliance checks
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Water Systems</h3>
-                <p className="text-gray-600">
-                  Commercial water system solutions
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Drainage Solutions</h3>
-                <p className="text-gray-600">
-                  Commercial drainage and waste management
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Commercial Rates</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <span className="font-semibold">Site Assessment:</span> Free
+                  </li>
+                  <li>
+                    <span className="font-semibold">Standard Rate:</span> From £95/hour
+                  </li>
+                  <li>
+                    <span className="font-semibold">Emergency Call Out:</span> From £150
+                  </li>
+                  <li className="text-sm text-gray-600">
+                    * Custom quotes available for ongoing maintenance contracts
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Areas Section */}
-        <section className="py-20">
+        {/* Service Areas Section */}
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12">Areas We Cover</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <Link
-                href="/areas/central-london/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Central London
-              </Link>
-              <Link
-                href="/areas/north-london/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                North London
-              </Link>
-              <Link
-                href="/areas/south-london/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                South London
-              </Link>
-              <Link
-                href="/areas/east-london/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                East London
-              </Link>
-              <Link
-                href="/areas/west-london/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                West London
-              </Link>
-              <Link
-                href="/areas/camden/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Camden
-              </Link>
-              <Link
-                href="/areas/islington/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Islington
-              </Link>
-              <Link
-                href="/areas/hackney/commercial-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Hackney
-              </Link>
+            <div className="grid md:grid-cols-5 gap-4 mb-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Central London</h3>
+                <ul className="space-y-2">
+                  <li>Westminster</li>
+                  <li>City of London</li>
+                  <li>Covent Garden</li>
+                  <li>Mayfair</li>
+                  <li>Soho</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">North London</h3>
+                <ul className="space-y-2">
+                  <li>Islington</li>
+                  <li>Camden</li>
+                  <li>Finsbury Park</li>
+                  <li>Highgate</li>
+                  <li>Hampstead</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">South London</h3>
+                <ul className="space-y-2">
+                  <li>Southwark</li>
+                  <li>Lambeth</li>
+                  <li>Greenwich</li>
+                  <li>Brixton</li>
+                  <li>Peckham</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">East London</h3>
+                <ul className="space-y-2">
+                  <li>Tower Hamlets</li>
+                  <li>Hackney</li>
+                  <li>Newham</li>
+                  <li>Stratford</li>
+                  <li>Canary Wharf</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">West London</h3>
+                <ul className="space-y-2">
+                  <li>Hammersmith</li>
+                  <li>Fulham</li>
+                  <li>Chiswick</li>
+                  <li>Ealing</li>
+                  <li>Notting Hill</li>
+                </ul>
+              </div>
             </div>
+            <p className="text-center text-gray-600">
+              Serving businesses across all London areas. Contact us for service availability in your location.
+            </p>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-blue-600">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">Need Commercial Plumbing Services?</h2>
-              <p className="text-xl mb-8">
-                Our expert commercial plumbers are ready to help with all your business plumbing needs.
-                Contact us now for professional service.
-              </p>
-              <Link
-                href="tel:020XXXXXXXX"
-                className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold 
-                hover:bg-blue-50 transition-all duration-200 inline-block shadow-lg 
-                transform hover:scale-105"
-              >
-                Call Now
-              </Link>
-            </div>
+        {/* Call to Action Section */}
+        <section className="py-16 bg-blue-600 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-8">Need Commercial Plumbing Services?</h2>
+            <p className="text-xl mb-8">Get in touch for a free consultation and quote for your business.</p>
+            <Link
+              href="tel:020XXXXXXXX"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold 
+              hover:bg-gray-100 transition-all duration-200 inline-block shadow-lg 
+              transform hover:scale-105 mr-4"
+            >
+              Call Now
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold 
+              hover:bg-white hover:text-blue-600 transition-all duration-200 inline-block shadow-lg 
+              transform hover:scale-105"
+            >
+              Request Quote
+            </Link>
           </div>
         </section>
       </main>

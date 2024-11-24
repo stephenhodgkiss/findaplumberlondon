@@ -117,6 +117,13 @@ function generateSiteMap() {
     ...locationServicePages
   ];
 
+  console.log('Total URLs:', pages.length);
+  console.log('Static Pages:', staticPages.length);
+  console.log('Service Pages:', servicePages.length);
+  console.log('Area Pages:', areaPages.length);
+  console.log('Area-Service Combinations:', areaServicePages.length);
+  console.log('Location-Service Combinations:', locationServicePages.length);
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${pages

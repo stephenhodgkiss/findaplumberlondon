@@ -33,7 +33,7 @@ export default function Contact() {
                     <div>
                       <h3 className="text-lg font-semibold mb-2">Phone</h3>
                       {/* <a href="tel:020XXXXXXXX" className="text-blue-600 hover:text-blue-800"> */}
-                        <span className="text-gray-900">020 XXXX XXXX</span>
+                      {/* <span className="text-gray-900">020 XXXX XXXX</span> */}
                       {/* </a> */}
                       <p className="text-gray-600 mt-1">Available 24/7 for emergencies</p>
                     </div>
