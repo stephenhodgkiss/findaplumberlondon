@@ -14,4 +14,9 @@ module.exports = {
       },
     ],
   },
+  additionalPaths: async (config) => {
+    // We'll use our custom script to generate the sitemap
+    require('./scripts/generate-sitemap');
+    return [];
+  },
 }
