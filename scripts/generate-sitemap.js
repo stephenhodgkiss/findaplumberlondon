@@ -83,13 +83,7 @@ function generateSiteMap() {
     '/services',
     '/areas',
     '/privacy-policy',
-    '/terms-of-service',
-    '/blog',
-    '/faq',
-    '/reviews',
-    '/emergency',  // Emergency landing page
-    '/commercial', // Commercial landing page
-    '/residential' // Residential landing page
+    '/terms-of-service'
   ];
 
   // Add service pages
