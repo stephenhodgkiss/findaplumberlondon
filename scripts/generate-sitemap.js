@@ -110,12 +110,30 @@ function generateSiteMap() {
     ...areaServicePages
   ];
 
-  // Generate URLs with www prefix
-  const urls = allPages.map(page => `https://www.findaplumberlondon.com${page}`);
+  // Current date for lastmod
+  const currentDate = new Date().toISOString().split('T')[0];
 
-  // Write to file
-  const outputPath = path.join(__dirname, '..', 'sitemap-url-list.txt');
-  fs.writeFileSync(outputPath, urls.join('\n'));
+  // Generate URLs
+  const urls = allPages.map(page => `${baseUrl}${page}`);
+
+  // Generate XML sitemap
+  const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(url => `  <url>
+    <loc>${url}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>${url === baseUrl ? '1.0' : '0.8'}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+  // Write URL list to file
+  const urlListPath = path.join(__dirname, '..', 'sitemap-url-list.txt');
+  fs.writeFileSync(urlListPath, urls.join('\n'));
+
+  // Write XML sitemap
+  const xmlPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
+  fs.writeFileSync(xmlPath, xmlContent);
   
   // Log statistics
   console.log('Sitemap Generation Statistics:');
@@ -124,6 +142,9 @@ function generateSiteMap() {
   console.log(`Service Pages: ${servicePages.length}`);
   console.log(`Area-Service Combinations: ${areaServicePages.length}`);
   console.log(`Total URLs: ${urls.length}`);
+  console.log('\nFiles generated:');
+  console.log(`- URL List: ${urlListPath}`);
+  console.log(`- XML Sitemap: ${xmlPath}`);
 }
 
 generateSiteMap();

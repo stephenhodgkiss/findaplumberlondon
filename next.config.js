@@ -15,15 +15,8 @@ const nextConfig = {
   poweredByHeader: false,
   
   // Production optimization settings
-  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
   compress: true,
   generateEtags: true,
-  
-  experimental: {
-    workerThreads: true,
-    cpus: 1,
-    optimizeCss: process.env.NODE_ENV === 'production'
-  },
   
   // Cache configuration
   onDemandEntries: {
@@ -67,4 +60,4 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;

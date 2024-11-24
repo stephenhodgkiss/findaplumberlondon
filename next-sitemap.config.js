@@ -2,21 +2,32 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://findaplumberlondon.com',
   generateRobotsTxt: true,
-  changefreq: 'daily',
-  priority: 0.7,
-  sitemapSize: 7000,
-  exclude: ['/api/*', '/admin/*'],
+  generateIndexSitemap: false, // Disable default sitemap generation
+  outDir: 'public',
+  exclude: ['/api/*', '/admin/*', '/404', '/500'],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/api/*', '/admin/*']
       },
     ],
+    additionalSitemaps: [
+      'https://findaplumberlondon.com/sitemap.xml'
+    ],
   },
-  additionalPaths: async (config) => {
-    // We'll use our custom script to generate the sitemap
-    require('./scripts/generate-sitemap');
-    return [];
-  },
+  transform: (config, url) => {
+    // Return null to exclude this page from sitemap
+    if (url.includes('/api/') || url.includes('/admin/')) {
+      return null;
+    }
+    
+    return {
+      loc: url,
+      changefreq: 'daily',
+      priority: url === config.siteUrl ? 1.0 : 0.8,
+      lastmod: new Date().toISOString()
+    };
+  }
 }
