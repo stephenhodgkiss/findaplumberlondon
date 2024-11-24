@@ -84,12 +84,18 @@ function generateSiteMap() {
     '/areas',
     '/privacy-policy',
     '/terms-of-service',
+    '/blog',
+    '/faq',
+    '/reviews',
+    '/emergency',  // Emergency landing page
+    '/commercial', // Commercial landing page
+    '/residential' // Residential landing page
   ];
 
   // Add service pages
   const servicePages = services.map(service => `/services/${service}`);
 
-  // Add area-service combination pages only (no standalone area pages)
+  // Add area-service combination pages
   const areaServicePages = [];
   allAreas.forEach(area => {
     services.forEach(service => {
@@ -110,7 +116,14 @@ function generateSiteMap() {
   // Write to file
   const outputPath = path.join(__dirname, '..', 'sitemap-url-list.txt');
   fs.writeFileSync(outputPath, urls.join('\n'));
-  console.log(`Generated sitemap with ${urls.length} URLs`);
+  
+  // Log statistics
+  console.log('Sitemap Generation Statistics:');
+  console.log('-----------------------------');
+  console.log(`Static Pages: ${staticPages.length}`);
+  console.log(`Service Pages: ${servicePages.length}`);
+  console.log(`Area-Service Combinations: ${areaServicePages.length}`);
+  console.log(`Total URLs: ${urls.length}`);
 }
 
 generateSiteMap();
