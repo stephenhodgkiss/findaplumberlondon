@@ -4,6 +4,8 @@ import { HerePlacesProvider } from './here-provider';
 import { FoursquarePlacesProvider } from './foursquare-provider';
 import { isWithinLondonBounds } from '../geolocation';
 import { getDatabase } from '../mongodb';
+import { getCachedResults as getMongoDBResults, cacheResults as cacheMongoDBResults } from '../cache/mongodb';
+import { getCachedResults as getUpstashResults, cacheResults as cacheUpstashResults } from '../cache/upstash';
 
 interface CachedSearchResult {
   _id: string;
@@ -16,10 +18,12 @@ interface CachedSearchResult {
 export class PlacesService {
   private readonly providers: PlaceProvider[] = [];
   private readonly enableCaching: boolean;
+  private cacheSource: string;
 
   constructor() {
     console.log('Initializing PlacesService...');
     this.enableCaching = process.env.ENABLE_CACHING === 'true';
+    this.cacheSource = process.env.CACHE_SOURCE || 'MONGODB';
 
     // Initialize providers
     try {
@@ -75,21 +79,11 @@ export class PlacesService {
     if (!this.enableCaching) return null;
 
     try {
-      const db = await getDatabase();
-      const collection = db.collection<CachedSearchResult>('places_cache');
-      
-      const result = await collection.findOne({
-        _id: cacheKey,
-        timestamp: { $gt: Date.now() - (3 * 60 * 60 * 1000) } // 3 hours cache
-      });
-
-      if (result) {
-        console.log('Cache hit for key:', cacheKey);
-        return result.places;
+      if (this.cacheSource === 'UPSTASH') {
+        return await getUpstashResults(cacheKey);
+      } else {
+        return await getMongoDBResults(cacheKey);
       }
-      
-      console.log('Cache miss for key:', cacheKey);
-      return null;
     } catch (error) {
       console.error('Error accessing cache:', error);
       return null;
@@ -100,23 +94,11 @@ export class PlacesService {
     if (!this.enableCaching) return;
 
     try {
-      const db = await getDatabase();
-      const collection = db.collection<CachedSearchResult>('places_cache');
-      
-      await collection.updateOne(
-        { _id: cacheKey },
-        {
-          $set: {
-            places,
-            timestamp: Date.now(),
-            query,
-            options
-          }
-        },
-        { upsert: true }
-      );
-      
-      console.log('Successfully cached results for key:', cacheKey);
+      if (this.cacheSource === 'UPSTASH') {
+        await cacheUpstashResults(cacheKey, query, options, places);
+      } else {
+        await cacheMongoDBResults(cacheKey, query, options, places);
+      }
     } catch (error) {
       console.error('Error caching results:', error);
     }

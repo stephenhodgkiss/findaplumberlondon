@@ -89,10 +89,7 @@ function generateSiteMap() {
   // Add service pages
   const servicePages = services.map(service => `/services/${service}`);
 
-  // Add area pages
-  const areaPages = allAreas.map(area => `/areas/${area}`);
-
-  // Add area-service combination pages
+  // Add area-service combination pages only (no standalone area pages)
   const areaServicePages = [];
   allAreas.forEach(area => {
     services.forEach(service => {
@@ -100,49 +97,20 @@ function generateSiteMap() {
     });
   });
 
-  // Add location-service combination pages
-  const locationServicePages = [];
-  allAreas.forEach(location => {
-    services.forEach(service => {
-      locationServicePages.push(`/${location}/${service}`);
-    });
-  });
-
   // Combine all routes
-  const pages = [
+  const allPages = [
     ...staticPages,
     ...servicePages,
-    ...areaPages,
-    ...areaServicePages,
-    ...locationServicePages
+    ...areaServicePages
   ];
 
-  console.log('Total URLs:', pages.length);
-  console.log('Static Pages:', staticPages.length);
-  console.log('Service Pages:', servicePages.length);
-  console.log('Area Pages:', areaPages.length);
-  console.log('Area-Service Combinations:', areaServicePages.length);
-  console.log('Location-Service Combinations:', locationServicePages.length);
+  // Generate URLs with www prefix
+  const urls = allPages.map(page => `https://www.findaplumberlondon.com${page}`);
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${pages
-    .map((page) => {
-      return `
-    <url>
-      <loc>${baseUrl}${page}</loc>
-      <lastmod>${new Date().toISOString()}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>${page === '' ? '1.0' : '0.7'}</priority>
-    </url>`;
-    })
-    .join('')}
-</urlset>`;
-
-  fs.writeFileSync(
-    path.join(process.cwd(), 'public', 'sitemap-0.xml'),
-    sitemap
-  );
+  // Write to file
+  const outputPath = path.join(__dirname, '..', 'sitemap-url-list.txt');
+  fs.writeFileSync(outputPath, urls.join('\n'));
+  console.log(`Generated sitemap with ${urls.length} URLs`);
 }
 
 generateSiteMap();
