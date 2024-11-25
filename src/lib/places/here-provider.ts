@@ -61,8 +61,8 @@ export class HerePlacesProvider implements PlaceProvider {
   readonly name = 'HERE Places';
   private readonly baseUrl = 'https://discover.search.hereapi.com/v1/discover';  // Fixed endpoint
   private readonly INCLUDED_CATEGORIES = [
-    'Plumber',
-    'Heating, Ventilating and Air Conditioning Contractor'
+    '100-1000-0000',  // Plumber category ID
+    '100-1100-0000'   // HVAC category ID
   ];
 
   constructor() {
@@ -76,7 +76,7 @@ export class HerePlacesProvider implements PlaceProvider {
 
   private hasIncludedCategory(result: any): boolean {
     return result.categories?.some((category: any) => 
-      this.INCLUDED_CATEGORIES.includes(category.name)
+      this.INCLUDED_CATEGORIES.includes(category.id)
     ) ?? false;
   }
 
@@ -229,11 +229,7 @@ export class HerePlacesProvider implements PlaceProvider {
     
     const processed = results
       .filter(result => {
-        // Check if any categories match our primary categories
-        const resultCategories = result.categories?.map((c: any) => c.id) || [];
-        const hasValidCategory = resultCategories.some(
-          (catId: string) => HERE_CATEGORIES.primary.includes(catId)
-        );
+        const hasValidCategory = this.hasIncludedCategory(result);
 
         // Check if name or categories contain excluded terms
         const hasExcludedTerm = excludedTerms.some(term => 

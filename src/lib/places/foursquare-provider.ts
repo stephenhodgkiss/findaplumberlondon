@@ -99,8 +99,8 @@ export class FoursquarePlacesProvider implements PlaceProvider {
   private readonly apiKey: string;
   readonly name = 'Foursquare Places';
   private readonly INCLUDED_CATEGORIES = [
-    'Plumber',
-    'Heating, Ventilating and Air Conditioning Contractor'
+    '11096',  // Plumber
+    '11077'   // HVAC Contractor
   ];
 
   constructor() {
@@ -275,7 +275,7 @@ export class FoursquarePlacesProvider implements PlaceProvider {
     //     place.categories.map(cat => `${cat.name} (${cat.id})`));
     // }
     return place.categories?.some(category => 
-      this.INCLUDED_CATEGORIES.includes(category.name)
+      this.INCLUDED_CATEGORIES.includes(category.id.toString())
     ) ?? false;
   }
 
