@@ -32,65 +32,67 @@ const AreaServicePage: NextPage<AreaServicePageProps> = ({ area, service, areaIn
   const [searchError, setSearchError] = useState('');
 
   useEffect(() => {
-    const fetchPlaces = async () => {
-      try {
-        setIsLoading(true);
-        setSearchError('');
-
-        const results = await searchPlaces(
-          `${serviceInfo.title} in ${areaInfo.name}`,
-          {
-            location: areaInfo.coordinates,
-            type: service,
-            radius: 10000,
-            maxResults: 50
-          }
-        );
-
-        setSearchResults(results);
-        if (results.length === 0) {
-          setSearchError('No plumbers found in this area. Please try again later or contact us for assistance.');
-        }
-      } catch (error) {
-        console.error('Error fetching places:', error);
-        setSearchError('Failed to load plumbers. Please try again later.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    // Only fetch if we don't have initial data
     if (initialPlaces.length === 0) {
       fetchPlaces();
     }
   }, [areaInfo.coordinates, areaInfo.name, service, serviceInfo.title, initialPlaces]);
 
+  const fetchPlaces = async () => {
+    try {
+      setIsLoading(true);
+      setSearchError('');
+      const results = await searchPlaces(
+        `${serviceInfo.title} in ${areaInfo.name}`,
+        {
+          location: areaInfo.coordinates,
+          type: service,
+          radius: 10000,
+          maxResults: 50
+        }
+      );
+      setSearchResults(results);
+      if (results.length === 0) {
+        setSearchError('No plumbers found in this area. Please try again later or contact us for assistance.');
+      }
+    } catch (error) {
+      console.error('Error fetching places:', error);
+      setSearchError('Failed to load plumbers. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Head>
         <title>{`${serviceInfo.title} in ${areaInfo.name} | Find a Plumber London`}</title>
-        <meta name="description" content={`Find reliable ${serviceInfo.title.toLowerCase()} services in ${areaInfo.name}. View ratings, reviews, and contact information for local plumbers.`} />
+        <meta 
+          name="description" 
+          content={`Find reliable ${serviceInfo.title.toLowerCase()} services in ${areaInfo.name}. View ratings, reviews, and contact information for local plumbers.`} 
+        />
       </Head>
 
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-2">{serviceInfo.title} in {areaInfo.name}</h1>
-        <p className="text-gray-600 mb-8">{serviceInfo.description}</p>
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold">{serviceInfo.title} in {areaInfo.name}</h1>
+          <p className="text-gray-600 mt-2">{serviceInfo.description}</p>
+        </header>
 
-        {isLoading ? (
-          <div className="flex justify-center items-center min-h-[200px]">
+        <section aria-label="Search Results" className="min-h-[200px]">
+          {isLoading ? (
             <LoadingSpinner />
-          </div>
-        ) : searchError ? (
-          <ErrorMessage message={searchError} />
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {searchResults.map((place) => (
-              <PlaceCard key={place.id} place={place} />
-            ))}
-          </div>
-        )}
+          ) : searchError ? (
+            <ErrorMessage message={searchError} />
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {searchResults.map((place) => (
+                <PlaceCard key={place.id} place={place} />
+              ))}
+            </div>
+          )}
+        </section>
       </main>
-    </div>
+    </>
   );
 };
 
