@@ -75,53 +75,6 @@ export default function DrainCleaning() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Our Drain Cleaning Services
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Drain Unblocking</h3>
-                <p className="text-gray-600">
-                  Professional unblocking of drains, sinks, and toilets
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">CCTV Surveys</h3>
-                <p className="text-gray-600">
-                  Detailed drain inspections to identify issues and damages
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Water Jetting</h3>
-                <p className="text-gray-600">
-                  High-pressure cleaning for stubborn blockages
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Root Removal</h3>
-                <p className="text-gray-600">
-                  Removal of tree root intrusions from drain pipes
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Drain Repairs</h3>
-                <p className="text-gray-600">
-                  Expert repairs for damaged or broken drains
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Maintenance</h3>
-                <p className="text-gray-600">
-                  Regular maintenance to prevent future blockages
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Areas We Cover */}
         <AreasList />
 

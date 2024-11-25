@@ -75,53 +75,6 @@ export default function GasPlumbing() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Our Gas Plumbing Services
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Boiler Installation</h3>
-                <p className="text-gray-600">
-                  Professional installation of new gas boilers
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Boiler Repairs</h3>
-                <p className="text-gray-600">
-                  Expert repairs for all types of gas boilers
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Gas Safety Checks</h3>
-                <p className="text-gray-600">
-                  Annual gas safety inspections and certificates
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Gas Pipe Work</h3>
-                <p className="text-gray-600">
-                  Installation and repair of gas pipework
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Gas Appliances</h3>
-                <p className="text-gray-600">
-                  Installation and servicing of gas appliances
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Emergency Gas Work</h3>
-                <p className="text-gray-600">
-                  24/7 emergency gas plumbing services
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Areas We Cover */}
         <AreasList />
 

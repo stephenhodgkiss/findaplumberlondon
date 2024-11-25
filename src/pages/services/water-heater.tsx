@@ -75,53 +75,6 @@ export default function WaterHeater() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Our Water Heater Services
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Installation</h3>
-                <p className="text-gray-600">
-                  Professional water heater installation
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Repairs</h3>
-                <p className="text-gray-600">
-                  Expert repairs for all heater types
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Maintenance</h3>
-                <p className="text-gray-600">
-                  Regular maintenance and servicing
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Replacement</h3>
-                <p className="text-gray-600">
-                  Complete water heater replacement
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Emergency Service</h3>
-                <p className="text-gray-600">
-                  24/7 emergency repair service
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">System Upgrades</h3>
-                <p className="text-gray-600">
-                  Energy-efficient system upgrades
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Areas We Cover */}
         <AreasList />
 

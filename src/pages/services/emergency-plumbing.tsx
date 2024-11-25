@@ -105,53 +105,6 @@ export default function EmergencyPlumbing() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Emergency Plumbing Services We Offer
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Burst Pipes</h3>
-                <p className="text-gray-600">
-                  Quick response to burst pipes to prevent water damage to your property
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Blocked Drains</h3>
-                <p className="text-gray-600">
-                  Emergency drain unblocking services using professional equipment
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Leaking Taps</h3>
-                <p className="text-gray-600">
-                  Fix leaking or broken taps to prevent water waste and damage
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Toilet Problems</h3>
-                <p className="text-gray-600">
-                  Emergency repairs for blocked, overflowing or broken toilets
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Water Leaks</h3>
-                <p className="text-gray-600">
-                  Detect and repair water leaks quickly to minimize damage
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-2">Boiler Repairs</h3>
-                <p className="text-gray-600">
-                  Emergency boiler repairs by Gas Safe registered engineers
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Areas We Cover */}
         <AreasList />
 

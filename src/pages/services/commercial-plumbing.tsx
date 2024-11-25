@@ -66,64 +66,6 @@ export default function CommercialPlumbingPage() {
           </div>
         </section>
 
-        {/* Services & Pricing Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Our Commercial Services & Pricing</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-semibold mb-4">Commercial Services Include:</h3>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Commercial boiler installation and repair</li>
-                  <li>Industrial pipe systems</li>
-                  <li>Water heater maintenance</li>
-                  <li>Commercial kitchen plumbing</li>
-                  <li>Preventive maintenance programs</li>
-                  <li>Emergency commercial repairs</li>
-                </ul>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-semibold mb-4">Commercial Rates</h3>
-                <ul className="space-y-4">
-                  <li>
-                    <span className="font-semibold">Site Assessment:</span> Free
-                  </li>
-                  <li>
-                    <span className="font-semibold">Standard Rate:</span> From £95/hour
-                  </li>
-                  <li>
-                    <span className="font-semibold">Emergency Call Out:</span> From £150
-                  </li>
-                  <li className="text-sm text-gray-600">
-                    * Custom quotes available for ongoing maintenance contracts
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-semibold mb-4">Service 1</h3>
-                <p>Service 1 description</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-semibold mb-4">Service 2</h3>
-                <p>Service 2 description</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-semibold mb-4">Service 3</h3>
-                <p>Service 3 description</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Areas We Cover */}
         <AreasList />
 
