@@ -243,9 +243,9 @@ export class HerePlacesProvider implements PlaceProvider {
           )
         );
 
-        // Check if place has either a phone number or website
+        // Check if place has a phone number
         let hasContactInfo = false;
-        hasContactInfo = result.contacts?.[0]?.phone?.[0]?.value || result.contacts?.[0]?.www?.[0]?.value;
+        hasContactInfo = result.contacts?.[0]?.phone?.[0]?.value;
         // filter out where the contact info contains business.data.gov.uk or blogspot.com
         hasContactInfo = hasContactInfo && !result.contacts?.[0]?.www?.[0]?.value?.includes('business.data.gov.uk') && !result.contacts?.[0]?.www?.[0]?.value?.includes('blogspot.com');
 

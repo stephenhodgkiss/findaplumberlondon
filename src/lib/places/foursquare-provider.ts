@@ -294,8 +294,8 @@ export class FoursquarePlacesProvider implements PlaceProvider {
       return false;
     }
 
-    // Check if place has either a phone number or website
-    if (!place.tel && !place.website) {
+    // Check if place has a phone number
+    if (!place.tel) {
       // console.log('Skipping place without contact info:', place.name);
       return false;
     }
