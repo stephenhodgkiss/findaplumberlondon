@@ -98,17 +98,9 @@ interface FoursquarePlace {
 export class FoursquarePlacesProvider implements PlaceProvider {
   private readonly apiKey: string;
   readonly name = 'Foursquare Places';
-  private readonly EXCLUDED_CATEGORIES = [
-    'Professional Cleaning Service',
-    'Carpenter',
-    'Landscaper and Gardener',
-    'Electrician',
-    'Carpet and Flooring Contractor',
-    'General Contractor',
-    'Car Repair',
-    'Locksmiths and Security Systems Services',
-    'Maid Services',
-    'ATM'
+  private readonly INCLUDED_CATEGORIES = [
+    'Plumber',
+    'Heating, Ventilating and Air Conditioning Contractor'
   ];
 
   constructor() {
@@ -216,7 +208,7 @@ export class FoursquarePlacesProvider implements PlaceProvider {
           // console.log('Foursquare raw results count:', data.results.length);
           
           // Filter out excluded categories
-          const filteredResults = data.results.filter((place: FoursquarePlace) => !this.hasExcludedCategory(place));
+          const filteredResults = data.results.filter((place: FoursquarePlace) => this.hasIncludedCategory(place));
           
           const places = filteredResults
             .filter((place: FoursquarePlace) => this.isValidPlace(place))
@@ -277,13 +269,13 @@ export class FoursquarePlacesProvider implements PlaceProvider {
     return hasExcluded;
   }
 
-  private hasExcludedCategory(place: FoursquarePlace): boolean {
+  private hasIncludedCategory(place: FoursquarePlace): boolean {
     // if (place.categories && place.categories.length > 0) {
     //   console.log(`Categories for "${place.name}" (ID: ${place.fsq_id}):`, 
     //     place.categories.map(cat => `${cat.name} (${cat.id})`));
     // }
     return place.categories?.some(category => 
-      this.EXCLUDED_CATEGORIES.includes(category.name)
+      this.INCLUDED_CATEGORIES.includes(category.name)
     ) ?? false;
   }
 

@@ -60,19 +60,9 @@ export class HerePlacesProvider implements PlaceProvider {
   private readonly apiKey: string;
   readonly name = 'HERE Places';
   private readonly baseUrl = 'https://discover.search.hereapi.com/v1/discover';  // Fixed endpoint
-  private readonly EXCLUDED_CATEGORIES = [
-    'Professional Cleaning',
-    'Carpenter',
-    'Landscaping',
-    'Gardening',
-    'Electrician',
-    'Flooring',
-    'General Contractor',
-    'Car Repair',
-    'Auto Service',
-    'Locksmiths and Security Systems Services',
-    'Maid Services',
-    'ATM'
+  private readonly INCLUDED_CATEGORIES = [
+    'Plumber',
+    'Heating, Ventilating and Air Conditioning Contractor'
   ];
 
   constructor() {
@@ -84,16 +74,10 @@ export class HerePlacesProvider implements PlaceProvider {
     this.apiKey = apiKey.trim();
   }
 
-  private hasExcludedCategory(result: any): boolean {
-    if (!result.categories || !Array.isArray(result.categories)) {
-      return false;
-    }
-
-    return result.categories.some((category: any) => 
-      this.EXCLUDED_CATEGORIES.some(excluded => 
-        category.name.toLowerCase().includes(excluded.toLowerCase())
-      )
-    );
+  private hasIncludedCategory(result: any): boolean {
+    return result.categories?.some((category: any) => 
+      this.INCLUDED_CATEGORIES.includes(category.name)
+    ) ?? false;
   }
 
   // Change from private to public to match the interface
@@ -145,7 +129,7 @@ export class HerePlacesProvider implements PlaceProvider {
       // });
 
       // Filter out results with excluded categories
-      const filteredResults = data.items?.filter((result: any) => !this.hasExcludedCategory(result)) || [];
+      const filteredResults = data.items?.filter((result: any) => this.hasIncludedCategory(result)) || [];
 
       return filteredResults.map((result: any) => {
         // Convert distance from meters to km first, then let config handle the rest
