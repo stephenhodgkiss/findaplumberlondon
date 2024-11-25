@@ -65,7 +65,7 @@ const areaData: Record<string, AreaInfo> = {
 };
 
 // Map of specific areas to their parent areas
-const areaMapping: Record<string, string> = {
+export const areaMapping: Record<string, string> = {
   // Central London Areas
   'aldgate': 'central-london',
   'bank': 'central-london',

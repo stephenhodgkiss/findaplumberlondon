@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import SafeImage from '../../components/SafeImage'
+import AreasList from '@/components/AreasList'
 
 export default function EmergencyPlumbing() {
   return (
@@ -150,67 +152,8 @@ export default function EmergencyPlumbing() {
           </div>
         </section>
 
-        {/* Service Areas Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Areas We Cover</h2>
-            <div className="grid md:grid-cols-5 gap-4 mb-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Central London</h3>
-                <ul className="space-y-2">
-                  <li>Westminster</li>
-                  <li>City of London</li>
-                  <li>Covent Garden</li>
-                  <li>Mayfair</li>
-                  <li>Soho</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">North London</h3>
-                <ul className="space-y-2">
-                  <li>Islington</li>
-                  <li>Camden</li>
-                  <li>Finsbury Park</li>
-                  <li>Highgate</li>
-                  <li>Hampstead</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">South London</h3>
-                <ul className="space-y-2">
-                  <li>Southwark</li>
-                  <li>Lambeth</li>
-                  <li>Greenwich</li>
-                  <li>Brixton</li>
-                  <li>Peckham</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">East London</h3>
-                <ul className="space-y-2">
-                  <li>Tower Hamlets</li>
-                  <li>Hackney</li>
-                  <li>Newham</li>
-                  <li>Stratford</li>
-                  <li>Canary Wharf</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">West London</h3>
-                <ul className="space-y-2">
-                  <li>Hammersmith</li>
-                  <li>Fulham</li>
-                  <li>Chiswick</li>
-                  <li>Ealing</li>
-                  <li>Notting Hill</li>
-                </ul>
-              </div>
-            </div>
-            <p className="text-center text-gray-600">
-              And many more areas across London! Contact us to check if we cover your location.
-            </p>
-          </div>
-        </section>
+        {/* Areas We Cover */}
+        <AreasList />
 
         {/* Call to Action Section */}
         <section className="py-16 bg-blue-600 text-white">

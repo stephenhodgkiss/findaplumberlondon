@@ -72,7 +72,8 @@ const AreaPage: NextPage<AreaPageProps> = ({ area, areaInfo }) => {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                    <p className="text-gray-600">{service.description}</p>
+                    <p className="text-gray-600 mb-4">{service.description}</p>
+                    <p className="text-blue-600 font-semibold hover:text-blue-700">CLICK FOR MORE INFORMATION →</p>
                   </div>
                 </Link>
               ))}

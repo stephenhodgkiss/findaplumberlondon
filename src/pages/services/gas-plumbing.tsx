@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import SafeImage from '../../components/SafeImage'
+import AreasList from '@/components/AreasList'
 
 export default function GasPlumbing() {
   return (
@@ -121,67 +122,13 @@ export default function GasPlumbing() {
           </div>
         </section>
 
-        {/* Areas Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Areas We Cover</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <Link
-                href="/areas/central-london/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Central London
-              </Link>
-              <Link
-                href="/areas/north-london/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                North London
-              </Link>
-              <Link
-                href="/areas/south-london/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                South London
-              </Link>
-              <Link
-                href="/areas/east-london/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                East London
-              </Link>
-              <Link
-                href="/areas/west-london/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                West London
-              </Link>
-              <Link
-                href="/areas/camden/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Camden
-              </Link>
-              <Link
-                href="/areas/islington/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Islington
-              </Link>
-              <Link
-                href="/areas/hackney/gas-plumbing"
-                className="text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                Hackney
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* Areas We Cover */}
+        <AreasList />
 
-        {/* CTA Section */}
-        <section className="py-20 bg-blue-600">
+        {/* Call to Action Section */}
+        <section className="py-16 bg-blue-600 text-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center text-white">
+            <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6">Need a Gas Safe Engineer?</h2>
               <p className="text-xl mb-8">
                 Our Gas Safe registered engineers are ready to help with all your gas plumbing needs.

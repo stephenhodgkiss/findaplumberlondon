@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import SafeImage from '../../components/SafeImage'
+import AreasList from '@/components/AreasList'
 
 export default function CommercialPlumbingPage() {
   return (
@@ -102,67 +103,29 @@ export default function CommercialPlumbingPage() {
           </div>
         </section>
 
-        {/* Service Areas Section */}
-        <section className="py-16">
+        {/* Services Section */}
+        <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Areas We Cover</h2>
-            <div className="grid md:grid-cols-5 gap-4 mb-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Central London</h3>
-                <ul className="space-y-2">
-                  <li>Westminster</li>
-                  <li>City of London</li>
-                  <li>Covent Garden</li>
-                  <li>Mayfair</li>
-                  <li>Soho</li>
-                </ul>
+            <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Service 1</h3>
+                <p>Service 1 description</p>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">North London</h3>
-                <ul className="space-y-2">
-                  <li>Islington</li>
-                  <li>Camden</li>
-                  <li>Finsbury Park</li>
-                  <li>Highgate</li>
-                  <li>Hampstead</li>
-                </ul>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Service 2</h3>
+                <p>Service 2 description</p>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">South London</h3>
-                <ul className="space-y-2">
-                  <li>Southwark</li>
-                  <li>Lambeth</li>
-                  <li>Greenwich</li>
-                  <li>Brixton</li>
-                  <li>Peckham</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">East London</h3>
-                <ul className="space-y-2">
-                  <li>Tower Hamlets</li>
-                  <li>Hackney</li>
-                  <li>Newham</li>
-                  <li>Stratford</li>
-                  <li>Canary Wharf</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">West London</h3>
-                <ul className="space-y-2">
-                  <li>Hammersmith</li>
-                  <li>Fulham</li>
-                  <li>Chiswick</li>
-                  <li>Ealing</li>
-                  <li>Notting Hill</li>
-                </ul>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-semibold mb-4">Service 3</h3>
+                <p>Service 3 description</p>
               </div>
             </div>
-            <p className="text-center text-gray-600">
-              Serving businesses across all London areas. Contact us for service availability in your location.
-            </p>
           </div>
         </section>
+
+        {/* Areas We Cover */}
+        <AreasList />
 
         {/* Call to Action Section */}
         <section className="py-16 bg-blue-600 text-white">
