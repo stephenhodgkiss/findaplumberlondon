@@ -23,6 +23,10 @@ export class PlacesService {
   constructor() {
     console.log('Initializing PlacesService...');
     this.enableCaching = process.env.ENABLE_CACHING === 'true';
+    console.log('Cache configuration:', {
+      ENABLE_CACHING: process.env.ENABLE_CACHING,
+      CACHE_SOURCE: process.env.CACHE_SOURCE
+    });
     this.cacheSource = process.env.CACHE_SOURCE || 'MONGODB';
 
     // Initialize providers
