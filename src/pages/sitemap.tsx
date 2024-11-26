@@ -23,7 +23,7 @@ const sitemapData = {
     { title: 'Commercial Plumbing', path: '/services/commercial-plumbing' },
     { title: 'Emergency Plumbing', path: '/services/emergency-plumbing' },
     { title: 'Gas Plumbing', path: '/services/gas-plumbing' },
-    { title: 'Bathroom Plumbing', path: '/services/bathroom-plumbing' },
+    { title: 'Water Heater Services', path: '/services/water-heater' },
     { title: 'Drain Cleaning', path: '/services/drain-cleaning' },
   ],
 }
